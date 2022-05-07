@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraBehavior : MonoBehaviour
 {
     public float minX;
     public float maxX;
