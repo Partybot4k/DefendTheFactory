@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed;
+    public float wallPos;
+    private bool hasReachedWall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!hasReachedWall)
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            if (transform.position.x >= wallPos)
+            {
+                hasReachedWall = true;
+            }
+        } else
+        {
+
+        }
     }
 }
