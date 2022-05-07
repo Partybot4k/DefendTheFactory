@@ -19,18 +19,18 @@ public class MapTileGrid : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("Clicked a tile! Nice!");
-            RayCastAndSetDestination();
+            ClickTile();
         }
     }
 
-    void RayCastAndSetDestination()
+    void ClickTile()
     {
         Vector2 rayPos = new Vector2(
             Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        rayPos /= 16;
+        //rayPos /= 16;
         MapTile clickedMapTile = GetTile(rayPos);
-        if (clickedMapTile == null || !clickedMapTile.walkable) return;
+        if (clickedMapTile == null) return;
         Debug.Log(clickedMapTile.tileNode.Value);
 }
 
