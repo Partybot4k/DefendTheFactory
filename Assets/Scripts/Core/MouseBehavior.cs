@@ -11,12 +11,10 @@ public class MouseBehavior : MonoBehaviour
     private List<Collectible> objectsInGrasp;
 
     // References
-    private CircleCollider2D collider;
 
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -26,6 +24,7 @@ public class MouseBehavior : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
+            print(colliders);
         }
     }
 }
