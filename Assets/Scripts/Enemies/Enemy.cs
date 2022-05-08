@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         if (!hasReachedWall)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * speed);
             if (transform.position.x >= wallPos)
             {
                 hasReachedWall = true;
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
         // Instance a collectible
 
         // Remove Enemy object
-        Destroy(GetComponent<Enemy>());
+        Destroy(GetComponent<Enemy>().gameObject);
+        Debug.Log("Enemy should be dying");
     }
 }
