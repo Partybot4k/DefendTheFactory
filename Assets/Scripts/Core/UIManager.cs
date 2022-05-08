@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text wallHealthUIComponent;
+    public ShopMenu shopMenu;
     public int wallHealthValue;
     void Start()
     {
@@ -16,6 +17,11 @@ public class UIManager : MonoBehaviour
     {
         wallHealthValue = newValue;
         wallHealthUIComponent.text = "Wall Health: " + wallHealthValue;
+    }
+
+    public void openShopMenu(ShopInventory invetory)
+    {
+        shopMenu.open(invetory);
     }
 
     // Update is called once per frame
