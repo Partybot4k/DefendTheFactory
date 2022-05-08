@@ -179,7 +179,7 @@ public class MapTileGrid : MonoBehaviour
 
     public MapTile GetTile(Vector2 position)
     {
-        return GetTile((int)position.x, (int)position.y);
+        return GetTile((int)Mathf.Round(position.x), (int)Mathf.Round(position.y));
     }
 
     public TileNode GetTileNode(Vector2 position)
