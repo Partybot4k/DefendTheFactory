@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         // Instance a collectible
 
         // Remove Enemy object
-        Destroy(GetComponent<Enemy>());
+        Destroy(GetComponent<Enemy>().gameObject);
         Debug.Log("Enemy should be dying");
     }
 }
