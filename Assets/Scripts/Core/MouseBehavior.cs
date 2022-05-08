@@ -34,6 +34,10 @@ public class MouseBehavior : MonoBehaviour
 
         // On click
         if (Input.GetMouseButtonDown(0)) {
+            // Play sound effect
+            GetComponent<AudioSource>().Play();
+
+
             // Get all colliding objects in radius of mouse click
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
             Debug.Log(colliders.Length);

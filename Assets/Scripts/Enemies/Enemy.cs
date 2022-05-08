@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
         // Instance a collectible
 
         // Remove Enemy object
+        GetComponent<AudioSource>().Play();
         Destroy(GetComponent<Enemy>().gameObject);
-        Debug.Log("Enemy should be dying");
     }
 }
