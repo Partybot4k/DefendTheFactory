@@ -6,6 +6,8 @@ public class Building : MonoBehaviour
 {
     public BuildingInfo buildingInfo;
     public SpriteRenderer spriteRenderer;
+    public delegate void OnClick();
+    public OnClick onClick;
     
     void Start()
     {
@@ -16,5 +18,13 @@ public class Building : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void click()
+    {
+        if(onClick != null)
+        {
+            onClick();
+        }
     }
 }

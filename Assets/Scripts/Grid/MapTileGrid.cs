@@ -47,6 +47,7 @@ public class MapTileGrid : MonoBehaviour
         Building b = clickedMapTile.buildingOnTile;
         if(null != b)
         {
+            b.click();
             Debug.Log(b.buildingInfo.name);
         }
 }
