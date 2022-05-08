@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef9f39623aa674ba01087af29a1043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickDamage: 0
+  clickDamage: 2
   clickRadius: 5
   clickCooldown: 0
+  objectPickupRadius: 0.25
+  objectPullRadius: 0.75
