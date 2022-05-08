@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     {
         if (!hasReachedWall)
         {
-            transform.Translate(Vector3.right * speed);
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
             if (transform.position.x >= wallPos)
             {
                 hasReachedWall = true;
