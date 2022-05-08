@@ -10,6 +10,7 @@ public class Wall : MonoBehaviour
     public MapTileGrid grid;
     public GameObject wallSprite;
     public List<GameObject> wallBlocks;
+    public UIManager UIManager;
     public float wallBlockZValue = -1;
     void Start()
     {
@@ -28,6 +29,12 @@ public class Wall : MonoBehaviour
             wallBlock.transform.SetParent(transform);
             wallBlocks.Add(wallBlock);
         }
+    }
+
+    public void DamageWall(int damage)
+    {
+        Health -= damage;
+        UIManager.updateWallHealth(Health);
     }
 
     // Update is called once per frame

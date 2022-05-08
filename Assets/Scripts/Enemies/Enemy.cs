@@ -10,6 +10,10 @@ public class Enemy : MonoBehaviour
 
     public float wallPos;
     private bool hasReachedWall;
+    public Wall wall;
+
+    public int atWallTimer = 120;
+    public int wallDamage = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +33,18 @@ public class Enemy : MonoBehaviour
             }
         } else
         {
-
+            atWallAction();
         }
+    }
+
+    public void atWallAction()
+    {
+        if(atWallTimer == 0)
+        {
+            wall.DamageWall(wallDamage);
+            atWallTimer = 120;
+        }
+        atWallTimer--;
     }
 
     public float damage(float amount)

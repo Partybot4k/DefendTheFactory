@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: Health
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4363928523294773116, guid: f16b8513d613006468f22f4297fdc2d9, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 175114035}
     - target: {fileID: 4363928523294773117, guid: f16b8513d613006468f22f4297fdc2d9, type: 3}
       propertyPath: m_RootOrder
       value: 0

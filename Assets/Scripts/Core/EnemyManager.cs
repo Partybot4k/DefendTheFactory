@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     public MapTileGrid grid;
     public Enemy basicEnemy;
     public float wallPosition;
+    public Wall wall;
     public List<Enemy> enemies = new List<Enemy>();
     int timer = 1;
     void Start()
@@ -23,6 +24,7 @@ public class EnemyManager : MonoBehaviour
                       Quaternion.identity);
         newEnemy.transform.SetParent(transform);
         newEnemy.wallPos = wallPosition * grid.gridSizeScale - grid.gridSizeScale;
+        newEnemy.wall = wall;
         enemies.Add(newEnemy);
     }
 
