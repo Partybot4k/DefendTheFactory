@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public EnemyManager enemySpawner;
     public MapTileGrid grid;
     public Wall wall;
     public float wallPosition;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     {
             wall.position = wallPosition;
             wall.BuildWall();
+        enemySpawner.wallPosition = wallPosition;
     }
 
     // Update is called once per frame
