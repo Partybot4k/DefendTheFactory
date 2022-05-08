@@ -10,6 +10,7 @@ public class MouseBehavior : MonoBehaviour
     private List<Collectible> objectsPickedUp;
     public float objectPickupRadius;
     public float objectPullRadius;
+    public float objectPickupWeight;
 
     // References
 
@@ -24,16 +25,9 @@ public class MouseBehavior : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
-        // Every frame
-        // Get all collectable colliders
-        Collider2D[] collectableColliders = Physics2D.OverlapCircleAll(mousePos, objectPullRadius);
-        for (int c= 0; c < collectableColliders.Length; c++)
-        {
-
-        }
-
         // On click
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             // Play sound effect
             GetComponent<AudioSource>().Play();
 
@@ -43,11 +37,27 @@ public class MouseBehavior : MonoBehaviour
             Debug.Log(colliders.Length);
 
             // For each of the colliders call the damage function if it has an enemy object
-            for (int i = 0; i < colliders.Length; i ++)
+            for (int i = 0; i < colliders.Length; i++)
             {
                 Enemy e = colliders[i].GetComponent<Enemy>();
                 e.damage(clickDamage);
             }
+        }
+
+        // Every frame
+        // Get all collectable colliders
+        Collider2D[] collectableColliders = Physics2D.OverlapCircleAll(mousePos, objectPullRadius);
+        for (int c = 0; c < collectableColliders.Length; c++)
+        {
+            Debug.Log(collectableColliders.Length);
+            Collectible col = collectableColliders[c].GetComponent<Collectible>();
+            float distance = Vector2.Distance(mousePos, col.transform.position);
+            if (distance < objectPickupRadius)
+            {
+                col.pickUp();
+            }
+
+            col.attract(Vector3.Normalize(mousePos - col.transform.position), objectPickupWeight);
         }
     }
 }

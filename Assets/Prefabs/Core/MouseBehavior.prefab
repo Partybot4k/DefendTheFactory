@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5813565946461562518
+--- !u!1 &6956023288807109516
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3906236807237609068}
-  - component: {fileID: 2890595694702490747}
-  - component: {fileID: -3430895820764616159}
+  - component: {fileID: 6956023288807109519}
+  - component: {fileID: 6956023288807109513}
+  - component: {fileID: 6956023288807109518}
   m_Layer: 0
   m_Name: MouseBehavior
   m_TagString: Untagged
@@ -18,45 +18,46 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3906236807237609068
+--- !u!4 &6956023288807109519
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813565946461562518}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.623857, y: 17.369442, z: -0.119309746}
+  m_GameObject: {fileID: 6956023288807109516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2890595694702490747
+--- !u!114 &6956023288807109513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813565946461562518}
+  m_GameObject: {fileID: 6956023288807109516}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7ef9f39623aa674ba01087af29a1043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickDamage: 2
-  clickRadius: 5
+  clickRadius: 0.5
   clickCooldown: 0
   objectPickupRadius: 0.25
   objectPullRadius: 0.75
---- !u!82 &-3430895820764616159
+  objectPickupWeight: 2
+--- !u!82 &6956023288807109518
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813565946461562518}
+  m_GameObject: {fileID: 6956023288807109516}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
