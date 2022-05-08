@@ -28,7 +28,7 @@ public class MapTileGrid : MonoBehaviour
         Vector2 rayPos = new Vector2(
             Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        //rayPos /= 16;
+        rayPos /= gridSizeScale;
         MapTile clickedMapTile = GetTile(rayPos);
         if (clickedMapTile == null) return;
         Debug.Log(clickedMapTile.tileNode.Value);
