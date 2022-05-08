@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
     public MapTileGrid grid;
     public Wall wall;
     public float wallPosition;
+    public UIManager uIManager;
     // Start is called before the first frame update
     void Start()
     {
-            wall.position = wallPosition;
-            wall.BuildWall();
+        wall.position = wallPosition;
+        wall.BuildWall();
         enemySpawner.wallPosition = wallPosition;
+        uIManager.updateWallHealth(wall.Health);
     }
 
     // Update is called once per frame
