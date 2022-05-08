@@ -23,8 +23,16 @@ public class MouseBehavior : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)) {
+
+            // Get all colliding objects in radius of mouse click
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
-            print(colliders);
+
+            // For each of the colliders call the damage function if it has an enemy object
+            for (int i = 0; i < colliders.Length; i ++)
+            {
+                Enemy e = colliders[i].GetComponent<Enemy>();
+                e.damage(clickDamage);
+            }
         }
     }
 }

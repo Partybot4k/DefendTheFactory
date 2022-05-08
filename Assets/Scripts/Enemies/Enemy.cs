@@ -33,18 +33,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    float damage(float amount)
+    public float damage(float amount)
     {
+        // Reduce enemy HP by amount
         health -= amount;
+
+        // Call die() if at 0 health
         if (health <= 0)
         {
             die();
         }
+
+        // Return the new health
         return health;
     }
 
     void die()
     {
+        // Instance a collectible
 
+        // Play death sound
+
+        // Remove Enemy object
     }
 }
