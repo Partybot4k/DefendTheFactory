@@ -25,10 +25,7 @@ public class MouseBehavior : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)) {
-            Vector3 clickedPos = mousePos;
-            if (collider.IsTouchingLayers()) {
-                print("colliding with something");
-            }
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
         }
     }
 }
