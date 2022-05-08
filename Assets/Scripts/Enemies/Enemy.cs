@@ -54,5 +54,6 @@ public class Enemy : MonoBehaviour
 
         // Remove Enemy object
         Destroy(GetComponent<Enemy>());
+        Debug.Log("Enemy should be dying");
     }
 }

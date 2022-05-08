@@ -25,7 +25,8 @@ public class MouseBehavior : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
 
             // Get all colliding objects in radius of mouse click
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius, -2);
+            Debug.Log(colliders.Length);
 
             // For each of the colliders call the damage function if it has an enemy object
             for (int i = 0; i < colliders.Length; i ++)
