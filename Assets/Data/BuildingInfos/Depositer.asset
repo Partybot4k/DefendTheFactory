@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bc2d7652f608541b0a8933bf906452, type: 3}
   m_Name: Depositer
   m_EditorClassIdentifier: 
-  buildingName: 
-  width: 0
-  height: 0
-  sprite: {fileID: 0}
+  buildingName: Depositer
+  width: 1
+  height: 1
+  sprite: {fileID: 21300000, guid: e5d79a00ac6a30846a99c775c0984c28, type: 3}
