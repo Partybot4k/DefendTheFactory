@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         if (!hasReachedWall)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * speed);
             if (transform.position.x >= wallPos)
             {
                 hasReachedWall = true;

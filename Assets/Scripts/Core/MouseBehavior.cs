@@ -8,7 +8,8 @@ public class MouseBehavior : MonoBehaviour
     public float clickRadius;
     public float clickCooldown;
     private List<Collectible> objectsPickedUp;
-    private List<Collectible> objectsInGrasp;
+    public float objectPickupRadius;
+    public float objectPullRadius;
 
     // References
 
@@ -22,8 +23,17 @@ public class MouseBehavior : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0)) {
 
+        // Every frame
+        // Get all collectable colliders
+        Collider2D[] collectableColliders = Physics2D.OverlapCircleAll(mousePos, objectPullRadius);
+        for (int c= 0; c < collectableColliders.Length; c++)
+        {
+
+        }
+
+        // On click
+        if (Input.GetMouseButtonDown(0)) {
             // Get all colliding objects in radius of mouse click
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
             Debug.Log(colliders.Length);
