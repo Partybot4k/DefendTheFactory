@@ -52,8 +52,7 @@ public class Enemy : MonoBehaviour
     {
         // Instance a collectible
 
-        // Play death sound
-
         // Remove Enemy object
+        Destroy(GetComponent<Enemy>());
     }
 }
