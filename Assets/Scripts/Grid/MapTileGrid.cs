@@ -23,15 +23,32 @@ public class MapTileGrid : MonoBehaviour
         }
     }
 
+    public void addBuilding(Building b)
+    {
+        Vector3 buildingPosition = b.gameObject.transform.position;
+        MapTile tile = GetTile(getTileCoord(buildingPosition));
+        tile.buildingOnTile = b;
+    }
+
+    public Vector2 getTileCoord(Vector2 worldCoord)
+    {
+        worldCoord /= gridSizeScale;
+        return new Vector2(Mathf.Round(worldCoord.x), Mathf.Round(worldCoord.y));
+    }
+
     void ClickTile()
     {
         Vector2 rayPos = new Vector2(
             Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        rayPos /= gridSizeScale;
-        MapTile clickedMapTile = GetTile(rayPos);
+        MapTile clickedMapTile = GetTile(getTileCoord(rayPos));
         if (clickedMapTile == null) return;
         Debug.Log(clickedMapTile.tileNode.Value);
+        Building b = clickedMapTile.buildingOnTile;
+        if(null != b)
+        {
+            Debug.Log(b.buildingInfo.name);
+        }
 }
 
     // This currently just copies the object contained in mapTile into a grid of dimensions width * height
@@ -179,7 +196,7 @@ public class MapTileGrid : MonoBehaviour
 
     public MapTile GetTile(Vector2 position)
     {
-        return GetTile((int)Mathf.Round(position.x), (int)Mathf.Round(position.y));
+        return GetTile((int)position.x, (int)position.y);
     }
 
     public TileNode GetTileNode(Vector2 position)

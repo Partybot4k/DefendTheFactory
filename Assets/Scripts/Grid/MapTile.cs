@@ -6,12 +6,17 @@ public class MapTile : MonoBehaviour
     public TileNode tileNode;
     public MapTileGrid mapTileGrid;
     public bool walkable;
+    public Building buildingOnTile;
     public void Start()
     {
         if(null != tileNode)
         {
             tileNode.Occupied = walkable;
         }
+    }
+    public bool hasBuilding()
+    {
+        return buildingOnTile == null;
     }
 
 }
