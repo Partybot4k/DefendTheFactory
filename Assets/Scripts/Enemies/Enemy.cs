@@ -5,13 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed;
+    public float baseHealth;
+    private float health;
+
     public float wallPos;
     private bool hasReachedWall;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = baseHealth;
     }
 
     // Update is called once per frame
@@ -28,5 +31,20 @@ public class Enemy : MonoBehaviour
         {
 
         }
+    }
+
+    float damage(float amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            die();
+        }
+        return health;
+    }
+
+    void die()
+    {
+
     }
 }
