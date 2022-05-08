@@ -6,32 +6,22 @@ public class Collectible : MonoBehaviour
 {
     public Item item;
     public int amount;
-
-    // Components
-    private GameObject obj;
     public SpriteRenderer sprRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Apply data
+        // Apply data from item scriptable object
         sprRenderer.sprite = item.icon;
     }
 
     private void Update()
     {
-        
+
     }
 
-    public void attract(Vector3 dir, float weight)
+    public void attract(Vector2 dir, float weight)
     {
-        transform.Translate(dir * weight * Time.deltaTime);
-        Debug.Log("Attracting");
-    }
-
-    public void pickUp()
-    {
-        Debug.Log($"Picking up {item.name}");
-        Destroy(obj);
+        transform.Translate(dir.normalized * weight * Time.deltaTime);
     }
 }

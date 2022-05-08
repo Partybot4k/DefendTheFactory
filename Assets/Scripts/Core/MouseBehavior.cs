@@ -22,7 +22,7 @@ public class MouseBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
         // On click
@@ -51,13 +51,19 @@ public class MouseBehavior : MonoBehaviour
         {
             Debug.Log(collectableColliders.Length);
             Collectible col = collectableColliders[c].GetComponent<Collectible>();
-            float distance = Vector2.Distance(mousePos, col.transform.position);
+            Vector2 colPos = new Vector2(col.transform.position.x, col.transform.position.y);
+            float distance = Vector2.Distance(mousePos, colPos);
             if (distance < objectPickupRadius)
             {
-                col.pickUp();
+                pickUp(col);
             }
 
-            col.attract(Vector3.Normalize(mousePos - col.transform.position), objectPickupWeight);
+            col.attract(mousePos - colPos, objectPickupWeight);
         }
+    }
+
+    void pickUp(Collectible c)
+    {
+        Destroy(c.gameObject);
     }
 }
