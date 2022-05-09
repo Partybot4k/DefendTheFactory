@@ -18,6 +18,7 @@ public class MouseBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pickerCollectiblesList = new List<ItemStack>();
     }
 
     // Update is called once per frame
@@ -35,7 +36,6 @@ public class MouseBehavior : MonoBehaviour
 
             // Get all colliding objects in radius of mouse click
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius, LayerMask.GetMask("Enemy"));
-            Debug.Log(colliders.Length);
             // For each of the colliders call the damage function if it has an enemy object
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -63,34 +63,33 @@ public class MouseBehavior : MonoBehaviour
 
     void pickUp(Collectible c)
     {
-        Item itemPickedUp = c.item;
-        int amtPickedUp = c.amount;
-        Destroy(c.gameObject);
-
         // Add the collectible to the picked up objects array
-        bool found = false;
-        for (int i = 0; i < pickerCollectiblesList.Count; i++)
+        if (c != null)
         {
-            // If the item is already in the array, just increase the amount
-            if (itemPickedUp == pickerCollectiblesList[i].item)
+            bool found = false;
+            for (int i = 0; i < pickerCollectiblesList.Count; i++)
             {
-                print("Adding to");
-                pickerCollectiblesList[i].amount += amtPickedUp;
-                found = true;
-                break;
+                // If the item is already in the array, just increase the amount
+                if (c.item.name.Equals(pickerCollectiblesList[i].item.name))
+                {
+                    print("found and adding");
+                    found = true;
+                    pickerCollectiblesList[i].amount += c.amount;
+                    break;
+                }
             }
-        }
 
-        if (!found)
-        {
-            print("Creating new");
-            pickerCollectiblesList.Add(new ItemStack(itemPickedUp, amtPickedUp));
+            if (!found)
+            {
+                print("creating new");
+                pickerCollectiblesList.Add(new ItemStack(c.item, c.amount));
+            }
         }
 
         // Update the picker UI that follows the mouse around
 
 
-        // Print the current list in the debugger
-        Debug.Log(pickerCollectiblesList.ToString());
+        // Destroy the collectible game object
+        Destroy(c.gameObject);
     }
 }
