@@ -10,7 +10,7 @@ public class MouseBehavior : MonoBehaviour
     public float objectPickupRadius;
     public float objectPullRadius;
     public float objectPickupWeight;
-    public List<PickerCollectible> pickerCollectiblesList;
+    public List<ItemStack> pickerCollectiblesList;
     private UIManager uiManager = UIManager.Instance;
 
     // References
@@ -34,8 +34,8 @@ public class MouseBehavior : MonoBehaviour
 
 
             // Get all colliding objects in radius of mouse click
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
-
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius, LayerMask.GetMask("Enemy"));
+            Debug.Log(colliders.Length);
             // For each of the colliders call the damage function if it has an enemy object
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -46,7 +46,7 @@ public class MouseBehavior : MonoBehaviour
 
         // Every frame
         // Get all collectable colliders
-        Collider2D[] collectableColliders = Physics2D.OverlapCircleAll(mousePos, objectPullRadius);
+        Collider2D[] collectableColliders = Physics2D.OverlapCircleAll(mousePos, objectPullRadius, LayerMask.GetMask("Collectible"));
         for (int c = 0; c < collectableColliders.Length; c++)
         {
             Collectible col = collectableColliders[c].GetComponent<Collectible>();
@@ -74,7 +74,7 @@ public class MouseBehavior : MonoBehaviour
             // If the item is already in the array, just increase the amount
             if (itemPickedUp == pickerCollectiblesList[i].item)
             {
-                Debug.Log("adding");
+                print("Adding to");
                 pickerCollectiblesList[i].amount += amtPickedUp;
                 found = true;
                 break;
@@ -83,11 +83,14 @@ public class MouseBehavior : MonoBehaviour
 
         if (!found)
         {
-            pickerCollectiblesList.Add(new PickerCollectible(itemPickedUp, amtPickedUp));
-            Debug.Log("Creating new");
+            print("Creating new");
+            pickerCollectiblesList.Add(new ItemStack(itemPickedUp, amtPickedUp));
         }
 
         // Update the picker UI that follows the mouse around
 
+
+        // Print the current list in the debugger
+        Debug.Log(pickerCollectiblesList.ToString());
     }
 }
