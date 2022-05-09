@@ -10,4 +10,9 @@ public class ItemExchange : ScriptableObject
     public int resultAmount;
     public Item costItem;
     public int costAmount;
+
+    public string getShopButtonText()
+    {
+        return "You get " + resultItem.name + " x " + resultAmount + " for " + costItem.name + " x " + costAmount;
+    }
 }

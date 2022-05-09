@@ -38,12 +38,14 @@ public class MapTileGrid : MonoBehaviour
 
     void ClickTile()
     {
+        // Get the mouse position and convert it to the world position
         Vector2 rayPos = new Vector2(
             Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         MapTile clickedMapTile = GetTile(getTileCoord(rayPos));
         if (clickedMapTile == null) return;
         Debug.Log(clickedMapTile.tileNode.Value);
+        // click the building if there is one
         Building b = clickedMapTile.buildingOnTile;
         if(null != b)
         {

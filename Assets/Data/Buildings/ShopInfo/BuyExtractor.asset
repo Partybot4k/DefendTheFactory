@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb322e3328c23a41ad3c159beb25128, type: 3}
   m_Name: BuyExtractor
   m_EditorClassIdentifier: 
+  resultItem: {fileID: 11400000, guid: 36b2336d484bef7498049c45f1b520c7, type: 2}
+  resultAmount: 1
+  costItem: {fileID: 11400000, guid: 35743834132389c4082cc0919c7ef3ed, type: 2}
+  costAmount: 5

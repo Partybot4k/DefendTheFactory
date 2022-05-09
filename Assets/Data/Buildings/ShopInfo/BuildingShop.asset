@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf19cdb74fb24094282f0bcb937dd182, type: 3}
   m_Name: BuildingShop
   m_EditorClassIdentifier: 
-  inventory: []
+  inventory:
+  - {fileID: 11400000, guid: 9fd565153631b8a4d8808ba527665608, type: 2}
+  - {fileID: 11400000, guid: 9fd565153631b8a4d8808ba527665608, type: 2}

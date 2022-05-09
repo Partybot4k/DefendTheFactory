@@ -9,8 +9,20 @@ public class UIManager : MonoBehaviour
     public Text wallHealthUIComponent;
     public ShopMenu shopMenu;
     public int wallHealthValue;
+    // We're making it a singleton for static reference
+    private UIManager() {}  
+    private static UIManager instance = null;  
+    public static UIManager Instance {  
+        get {  
+            if (instance == null) {  
+                instance = new UIManager();  
+            }  
+            return instance;  
+        }  
+    }  
     void Start()
     {
+        instance = this;
     }
 
     public void updateWallHealth(int newValue)
@@ -19,9 +31,14 @@ public class UIManager : MonoBehaviour
         wallHealthUIComponent.text = "Wall Health: " + wallHealthValue;
     }
 
-    public void openShopMenu(ShopInventory invetory)
+    public void toggleShopMenu(ShopInventory invetory)
     {
-        shopMenu.open(invetory);
+        if(!shopMenu.isOpen){
+            shopMenu.open(invetory);
+        }
+        else{
+            shopMenu.close();
+        }
     }
 
     // Update is called once per frame

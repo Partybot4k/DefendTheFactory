@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class ShopMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Button shopButtonPrefab;
+    public ShopButton shopButtonPrefab;
     public int buttonPadding;
-    public List<Button> shopButtons;
+    public List<ShopButton> shopButtons;
+    public bool isOpen;
     void Start()
     {
         
@@ -15,15 +16,29 @@ public class ShopMenu : MonoBehaviour
 
     public void open(ShopInventory shopInventory)
     {
+        gameObject.SetActive(true);
+        isOpen = true;
+        shopButtons = new List<ShopButton>();
         int i = 0;
         foreach(ItemExchange itemExchange in shopInventory.inventory)
         {
-            Button shopButton = Instantiate(
+            ShopButton shopButton = Instantiate(
                 shopButtonPrefab,
-                new Vector3(transform.position.x, transform.position.y * i * buttonPadding, -2.0f),
+                new Vector3(transform.position.x, transform.position.y + (i * buttonPadding), -2.0f),
                 Quaternion.identity);
-                shopButtons.Add(shopButton);
-                i++;
+            shopButtons.Add(shopButton);
+            shopButton.SetText(itemExchange);
+            shopButton.transform.SetParent(transform);
+            i++;
+        }
+    }
+
+    public void close()
+    {
+        gameObject.SetActive(false);
+        isOpen = false;
+        foreach(ShopButton button in shopButtons){
+            Destroy(button.gameObject);
         }
     }
 
