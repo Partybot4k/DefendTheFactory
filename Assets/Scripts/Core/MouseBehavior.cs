@@ -7,10 +7,10 @@ public class MouseBehavior : MonoBehaviour
     public float clickDamage;
     public float clickRadius;
     public float clickCooldown;
-    private List<Collectible> objectsPickedUp;
     public float objectPickupRadius;
     public float objectPullRadius;
     public float objectPickupWeight;
+    public List<PickerCollectible> pickerCollectiblesList;
 
     // References
 
@@ -34,7 +34,6 @@ public class MouseBehavior : MonoBehaviour
 
             // Get all colliding objects in radius of mouse click
             Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
-            Debug.Log(colliders.Length);
 
             // For each of the colliders call the damage function if it has an enemy object
             for (int i = 0; i < colliders.Length; i++)
@@ -49,7 +48,6 @@ public class MouseBehavior : MonoBehaviour
         Collider2D[] collectableColliders = Physics2D.OverlapCircleAll(mousePos, objectPullRadius);
         for (int c = 0; c < collectableColliders.Length; c++)
         {
-            Debug.Log(collectableColliders.Length);
             Collectible col = collectableColliders[c].GetComponent<Collectible>();
             Vector2 colPos = new Vector2(col.transform.position.x, col.transform.position.y);
             float distance = Vector2.Distance(mousePos, colPos);
@@ -64,6 +62,45 @@ public class MouseBehavior : MonoBehaviour
 
     void pickUp(Collectible c)
     {
+        Item itemPickedUp = c.item;
+        int amtPickedUp = c.amount;
         Destroy(c.gameObject);
+
+        // Add the collectible to the picked up objects array
+        bool found = false;
+        for (int i = 0; i < pickerCollectiblesList.Count; i++)
+        {
+            // If the item is already in the array, just increase the amount
+            if (itemPickedUp == pickerCollectiblesList[i].item)
+            {
+                Debug.Log("adding");
+                pickerCollectiblesList[i].amount += amtPickedUp;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            pickerCollectiblesList.Add(new PickerCollectible(itemPickedUp, amtPickedUp));
+            Debug.Log("Creating new");
+        }
+
+        // Update the picker UI that follows the mouse around
+
+    }
+
+
+    // Inner class for collectibles that are currently held by the mouse
+    public class PickerCollectible
+    {
+        public Item item;
+        public int amount;
+
+        public PickerCollectible(Item i, int amt)
+        {
+            item = i;
+            amount = amt;
+        }
     }
 }

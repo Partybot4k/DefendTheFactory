@@ -48,6 +48,7 @@ MonoBehaviour:
   clickDamage: 2
   clickRadius: 0.5
   clickCooldown: 0
+  collectiblesPickedUp: []
   objectPickupRadius: 0.25
   objectPullRadius: 0.75
   objectPickupWeight: 0.5
