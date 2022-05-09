@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = new UIManager();
+                //instance = this.gameObject.AddComponent<UIManager>();
             }
             return instance;
         }
