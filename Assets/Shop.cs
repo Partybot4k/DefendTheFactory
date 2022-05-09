@@ -19,6 +19,17 @@ public class Shop : MonoBehaviour
         Debug.Log(inventory.inventory[0].resultItem);
         uiManager.toggleShopMenu(inventory);
     }
+    // This function matches a purchase to it's item and reacts accordingly
+    public static void OnBuy(ItemExchange itemExchange)
+    {
+        switch(itemExchange.resultItem.name){
+            case "Pipe":
+                
+            default:
+                //int X = 5;
+                break;
+        }
+    }
 
     void  Update()
     {
