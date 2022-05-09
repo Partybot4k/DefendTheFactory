@@ -27,7 +27,7 @@ public class ShopMenu : MonoBehaviour
                 new Vector3(transform.position.x, transform.position.y + (i * buttonPadding), -2.0f),
                 Quaternion.identity);
             shopButtons.Add(shopButton);
-            shopButton.SetText(itemExchange);
+            shopButton.SetUp(itemExchange);
             shopButton.transform.SetParent(transform);
             i++;
         }

@@ -7,8 +7,13 @@ using TMPro;
 public class ShopButton : MonoBehaviour
 {
     public TMP_Text text;
+    public Button button;
 
-    public void SetText(ItemExchange deal){
+    public void SetUp(ItemExchange deal){
         text.text = deal.getShopButtonText();
+    }
+    // Set on shop button prefab as OnClick() event
+    public void Buy(){
+        Debug.Log("Thanks for your purchase!");
     }
 }
