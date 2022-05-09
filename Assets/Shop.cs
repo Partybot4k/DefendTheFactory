@@ -24,7 +24,10 @@ public class Shop : MonoBehaviour
     {
         switch(itemExchange.resultItem.name){
             case "Pipe":
-                
+                break;
+            case "Depositor":
+                ConstructionModuleFactory.InstantiateConstructionModule(itemExchange.resultItem.name);
+                break;
             default:
                 //int X = 5;
                 break;

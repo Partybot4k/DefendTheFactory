@@ -8,12 +8,14 @@ public class ShopButton : MonoBehaviour
 {
     public TMP_Text text;
     public Button button;
+    public ItemExchange itemExchange;
 
     public void SetUp(ItemExchange deal){
         text.text = deal.getShopButtonText();
+        itemExchange = deal;
     }
     // Set on shop button prefab as OnClick() event
     public void Buy(){
-        Debug.Log("Thanks for your purchase!");
+        Shop.OnBuy(itemExchange);
     }
 }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Wall wall;
     public float wallPosition;
     public UIManager uIManager;
+    public ConstructionModuleFactory cmFactory;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
         wall.BuildWall();
         enemySpawner.wallPosition = wallPosition;
         uIManager.updateWallHealth(wall.Health);
+        ConstructionModuleFactory.grid = grid;
     }
 
     // Update is called once per frame
