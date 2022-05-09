@@ -10,16 +10,19 @@ public class UIManager : MonoBehaviour
     public ShopMenu shopMenu;
     public int wallHealthValue;
     // We're making it a singleton for static reference
-    private UIManager() {}  
-    private static UIManager instance = null;  
-    public static UIManager Instance {  
-        get {  
-            if (instance == null) {  
-                instance = new UIManager();  
-            }  
-            return instance;  
-        }  
-    }  
+    private UIManager() { }
+    private static UIManager instance = null;
+    public static UIManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new UIManager();
+            }
+            return instance;
+        }
+    }
     void Start()
     {
         instance = this;
@@ -33,10 +36,12 @@ public class UIManager : MonoBehaviour
 
     public void toggleShopMenu(ShopInventory invetory)
     {
-        if(!shopMenu.isOpen){
+        if (!shopMenu.isOpen)
+        {
             shopMenu.open(invetory);
         }
-        else{
+        else
+        {
             shopMenu.close();
         }
     }
@@ -44,6 +49,6 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

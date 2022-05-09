@@ -11,6 +11,7 @@ public class MouseBehavior : MonoBehaviour
     public float objectPullRadius;
     public float objectPickupWeight;
     public List<PickerCollectible> pickerCollectiblesList;
+    private UIManager uiManager = UIManager.Instance;
 
     // References
 
@@ -88,19 +89,5 @@ public class MouseBehavior : MonoBehaviour
 
         // Update the picker UI that follows the mouse around
 
-    }
-
-
-    // Inner class for collectibles that are currently held by the mouse
-    public class PickerCollectible
-    {
-        public Item item;
-        public int amount;
-
-        public PickerCollectible(Item i, int amt)
-        {
-            item = i;
-            amount = amt;
-        }
     }
 }
