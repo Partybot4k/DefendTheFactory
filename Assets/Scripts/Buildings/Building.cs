@@ -8,10 +8,15 @@ public class Building : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public delegate void OnClick();
     public OnClick onClick;
+    public bool isPipeConnectable = false;
+
+    public MapTileGrid grid;
     
     void Start()
     {
-        spriteRenderer.sprite = buildingInfo.sprite;
+        if(spriteRenderer.sprite == null){
+            spriteRenderer.sprite = buildingInfo.sprite;
+        }
     }
 
     // Update is called once per frame

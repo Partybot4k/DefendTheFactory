@@ -6,16 +6,20 @@ public class ConstructionModuleFactory : MonoBehaviour
 {
     public static ConstructionModule DepositorCM;
     public ConstructionModule DepositorCMInput;
-    public static Building PipeCMPrefab;
+    public MapTileGrid gridInput;
+    public static ConstructionModule PipeCMPrefab;
+    public ConstructionModule PipeCMPrefabInput;
     public static MapTileGrid grid;
 
     public void Start()
     {
         DepositorCM = DepositorCMInput;
+        PipeCMPrefab = PipeCMPrefabInput;
+        grid = gridInput;
     }
     // Does what it says. Called by shop
     public static void InstantiateConstructionModule(string buildingName){
-         ConstructionModule cm;
+        ConstructionModule cm = null;
         switch(buildingName)
         {
             case "Depositor":
@@ -23,17 +27,17 @@ public class ConstructionModuleFactory : MonoBehaviour
                         DepositorCM,
                         new Vector3(0.0f, 0.0f, -2.0f),
                         Quaternion.identity);
-                cm.grid = grid;
                 break;
             case "Pipe":
-                Instantiate(
+                cm = Instantiate(
                         PipeCMPrefab,
                         new Vector3(0.0f, 0.0f, -2.0f),
                         Quaternion.identity);
                 break;
             default:
                 Debug.LogError("Invalid buildingName Selection: " + buildingName);
-                break;
+                return;
         }
+        cm.grid = grid;
     }
 }

@@ -75,110 +75,42 @@ public class MapTileGrid : MonoBehaviour
         }
     }
     // Neighbors meaning tiles that can be pathed to directly from this tile
-    public List<TileNode> GetNeighboursOfTileNode(TileNode location)
+    public Dictionary<int, MapTile> GetNeighboursOfTile(MapTile location)
     {
-        List<TileNode> neighbours = new List<TileNode>();
+        Dictionary<int, MapTile> neighbours = new Dictionary<int, MapTile>();
 
-        int x = location.Value.x;
-        int y = location.Value.y;
+        int x = location.tileNode.Value.x;
+        int y = location.tileNode.Value.y;
         int mY = height;
         int mX = width;
-        bool top = false ;
-        bool right = false;
-        bool left = false;
-        bool bottom = false;
 
         // Check up.
         if (y < height - 1)
         {
             int i = x;
             int j = y + 1;
-
-            if (tileGrid[i, j].tileNode.Occupied)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-                top = true;
-            }
+            neighbours.Add(0, tileGrid[i, j]);
         }
         // Check right
         if (x < mX - 1)
         {
             int i = x + 1;
             int j = y;
-
-            if (tileGrid[i, j].tileNode.Occupied)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-                right = true;
-            }
+            neighbours.Add(1, tileGrid[i, j]);
         }
         // Check down
         if (y > 0)
         {
             int i = x;
             int j = y - 1;
-
-            if (tileGrid[i, j].tileNode.Occupied)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-                bottom = true;
-            }
+            neighbours.Add(2, tileGrid[i, j]);
         }
         // Check left
         if (x > 0)
         {
             int i = x - 1;
             int j = y;
-
-            if (tileGrid[i, j].tileNode.Occupied)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-                left = true;
-            }
-        }
-        // Check top-right
-        if (y < mY - 1 && x < mX - 1)
-        {
-            int i = x + 1;
-            int j = y + 1;
-
-            if (tileGrid[i, j].tileNode.Occupied && top && right)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-            }
-        }
-        // Check right-down
-        if (x < mX - 1 && y > 0)
-        {
-            int i = x + 1;
-            int j = y - 1;
-
-            if (tileGrid[i, j].tileNode.Occupied && right && bottom)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-            }
-        }
-        // Check left-top
-        if (x > 0 && y < mY - 1)
-        {
-            int i = x - 1;
-            int j = y + 1;
-
-            if (tileGrid[i, j].tileNode.Occupied && left && top)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-            }
-        }
-        // Check down-left
-        if (y > 0 && x > 0)
-        {
-            int i = x - 1;
-            int j = y - 1;
-
-            if (tileGrid[i, j].tileNode.Occupied && bottom && left)
-            {
-                neighbours.Add(tileGrid[i, j].tileNode);
-            }
+            neighbours.Add(3, tileGrid[i, j]);
         }
         return neighbours;
     }

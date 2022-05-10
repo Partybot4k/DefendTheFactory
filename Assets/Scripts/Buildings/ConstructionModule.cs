@@ -36,6 +36,7 @@ public class ConstructionModule : MonoBehaviour
                       new Vector3(transform.position.x, transform.position.y, -2.0f),
                       Quaternion.identity);
         grid.addBuilding(building);
+        building.grid = grid;
         Destroy(gameObject);
     }
 }

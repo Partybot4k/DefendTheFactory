@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 86352840942483562}
   - component: {fileID: 86352840942483563}
   - component: {fileID: 86352840942483560}
+  - component: {fileID: 4613526108475102302}
   m_Layer: 0
-  m_Name: Depositor
+  m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd596a414ab7664194c9843809bddef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingInfo: {fileID: 11400000, guid: 619a544bebe1a7943ba61a73b82ff1c6, type: 2}
+  buildingInfo: {fileID: 11400000, guid: 247ceea18e21d664c9b3b8a3dc449241, type: 2}
   spriteRenderer: {fileID: 86352840942483560}
   isPipeConnectable: 1
   grid: {fileID: 0}
@@ -90,14 +91,40 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: be9ea03b0dc066b458c96e58346015e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4613526108475102302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86352840942483561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ffe9416b9aef4eb5d28ea487bf6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building: {fileID: 86352840942483563}
+  direction: 0
+  directionToSprite:
+  - {fileID: 21300000, guid: d86f746a1a358c74db07c1fee7956a26, type: 3}
+  - {fileID: 21300000, guid: 798a7b1743055d34b93b60a72d1cb6b0, type: 3}
+  - {fileID: 21300000, guid: 9e8367c3e658bb0428bdeec059f9b7d5, type: 3}
+  - {fileID: 21300000, guid: c2c8f88c9f3dae948b5d870389a41835, type: 3}
+  - {fileID: 21300000, guid: 360b38cbf7c936f4fa268caca1436e63, type: 3}
+  - {fileID: 21300000, guid: edb56c0b96e32fa49a590bd7e88cb4a2, type: 3}
+  - {fileID: 21300000, guid: b10114b5ca04b864f92393f324b2ae9f, type: 3}
+  - {fileID: 21300000, guid: 95ae6c5be5e3c94449437b2f582ac754, type: 3}
+  - {fileID: 21300000, guid: 9ea084b97a00b3e4a88021832ec401f6, type: 3}
+  - {fileID: 21300000, guid: 936c558120cbd5e43ac4dfebe102b468, type: 3}
+  - {fileID: 21300000, guid: 216ae072ce7125b4a885c49708193751, type: 3}

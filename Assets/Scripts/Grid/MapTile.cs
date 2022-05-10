@@ -40,12 +40,4 @@ public class TileNode
 
         Value = value;
     }
-
-    // get the neighbours for this cell.
-    // here will will just throw the responsibility
-    // to get the neighbours to the grid.
-    public List<TileNode> GetNeighbours()
-    {
-        return mapTileGrid.GetNeighboursOfTileNode(this);
-    }
 }
