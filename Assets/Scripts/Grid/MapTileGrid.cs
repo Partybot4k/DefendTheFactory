@@ -75,9 +75,9 @@ public class MapTileGrid : MonoBehaviour
         }
     }
     // Neighbors meaning tiles that can be pathed to directly from this tile
-    public Dictionary<int, MapTile> GetNeighboursOfTile(MapTile location)
+    public Dictionary<Direction, MapTile> GetNeighboursOfTile(MapTile location)
     {
-        Dictionary<int, MapTile> neighbours = new Dictionary<int, MapTile>();
+        Dictionary<Direction, MapTile> neighbours = new Dictionary<Direction, MapTile>();
 
         int x = location.tileNode.Value.x;
         int y = location.tileNode.Value.y;
@@ -89,28 +89,28 @@ public class MapTileGrid : MonoBehaviour
         {
             int i = x;
             int j = y + 1;
-            neighbours.Add(0, tileGrid[i, j]);
-        }
-        // Check right
-        if (x < mX - 1)
-        {
-            int i = x + 1;
-            int j = y;
-            neighbours.Add(1, tileGrid[i, j]);
+            neighbours.Add(Direction.UP, tileGrid[i, j]);
         }
         // Check down
         if (y > 0)
         {
             int i = x;
             int j = y - 1;
-            neighbours.Add(2, tileGrid[i, j]);
+            neighbours.Add(Direction.DOWN, tileGrid[i, j]);
         }
         // Check left
         if (x > 0)
         {
             int i = x - 1;
             int j = y;
-            neighbours.Add(3, tileGrid[i, j]);
+            neighbours.Add(Direction.LEFT, tileGrid[i, j]);
+        }
+        // Check right
+        if (x < mX - 1)
+        {
+            int i = x + 1;
+            int j = y;
+            neighbours.Add(Direction.RIGHT, tileGrid[i, j]);
         }
         return neighbours;
     }

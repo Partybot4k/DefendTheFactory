@@ -8,7 +8,7 @@ public class Pipe : MonoBehaviour
     public Building building;
     MapTileGrid grid;
     public PipeDirection direction;
-    public List<Sprite> directionToSprite; // Organzed by ordinals from PipeDirectio
+    public List<Sprite> directionToSprite; // Organzed by ordinals from PipeDirection
 
     public enum PipeDirection{
         HORIZONTAL,
@@ -24,6 +24,8 @@ public class Pipe : MonoBehaviour
         VERTICAL_RIGHT
     }
     
+    public PipeItem pipeItemPrefab;
+
     void Start()
     {
         grid = building.grid;
@@ -36,17 +38,17 @@ public class Pipe : MonoBehaviour
     void UpdateDirection(bool alsoUpdateNeighbors)
     {
         Vector2 gridPosition = grid.getTileCoord(new Vector2(this.transform.position.x, this.transform.position.y));
-        Dictionary<int, MapTile> neighbors = grid.GetNeighboursOfTile(grid.GetTile(gridPosition));
-        bool up = neighbors[0] != null && neighbors[0].buildingOnTile != null && neighbors[0].buildingOnTile.isPipeConnectable;
-        bool right = neighbors[1] != null && neighbors[1].buildingOnTile != null && neighbors[1].buildingOnTile.isPipeConnectable;
-        bool down = neighbors[2] != null && neighbors[2].buildingOnTile != null && neighbors[2].buildingOnTile.isPipeConnectable;
-        bool left = neighbors[3] != null && neighbors[3].buildingOnTile != null && neighbors[3].buildingOnTile.isPipeConnectable;
-        UpdateDirection(up, down, left, right, neighbors);
+        Dictionary<Direction, MapTile> neighbors = grid.GetNeighboursOfTile(grid.GetTile(gridPosition));
+        bool up = neighbors[Direction.UP] != null && neighbors[Direction.UP].buildingOnTile != null && neighbors[Direction.UP].buildingOnTile.isPipeConnectable;
+        bool right = neighbors[Direction.RIGHT] != null && neighbors[Direction.RIGHT].buildingOnTile != null && neighbors[Direction.RIGHT].buildingOnTile.isPipeConnectable;
+        bool down = neighbors[Direction.DOWN] != null && neighbors[Direction.DOWN].buildingOnTile != null && neighbors[Direction.DOWN].buildingOnTile.isPipeConnectable;
+        bool left = neighbors[Direction.LEFT] != null && neighbors[Direction.LEFT].buildingOnTile != null && neighbors[Direction.LEFT].buildingOnTile.isPipeConnectable;
+        UpdateDirection(up, down, left, right);
         if(alsoUpdateNeighbors){
             Pipe p;
             if(up)
             {
-                p = neighbors[0].buildingOnTile.gameObject.GetComponent<Pipe>();
+                p = neighbors[Direction.UP].buildingOnTile.gameObject.GetComponent<Pipe>();
                 if(p != null)
                 {
                     p.UpdateDirection(false);
@@ -54,7 +56,7 @@ public class Pipe : MonoBehaviour
             }
             if(right)
             {
-                p = neighbors[1].buildingOnTile.gameObject.GetComponent<Pipe>();
+                p = neighbors[Direction.RIGHT].buildingOnTile.gameObject.GetComponent<Pipe>();
                 if(p != null)
                 {
                     p.UpdateDirection(false);
@@ -62,7 +64,7 @@ public class Pipe : MonoBehaviour
             }
             if(down)
             {
-                p = neighbors[2].buildingOnTile.gameObject.GetComponent<Pipe>();
+                p = neighbors[Direction.DOWN].buildingOnTile.gameObject.GetComponent<Pipe>();
                 if(p != null)
                 {
                     p.UpdateDirection(false);
@@ -70,7 +72,7 @@ public class Pipe : MonoBehaviour
             }
             if(left)
             {
-                p = neighbors[3].buildingOnTile.gameObject.GetComponent<Pipe>();
+                p = neighbors[Direction.LEFT].buildingOnTile.gameObject.GetComponent<Pipe>();
                 if(p != null)
                 {
                     p.UpdateDirection(false);
@@ -79,7 +81,7 @@ public class Pipe : MonoBehaviour
         }
     }
 
-    void UpdateDirection(bool up, bool down, bool left, bool right, Dictionary<int, MapTile> neighbors)
+    void UpdateDirection(bool up, bool down, bool left, bool right)
     {
         if((left && right && up && down) || (!left && !right && !up && !down)){
             direction = PipeDirection.CROSS;

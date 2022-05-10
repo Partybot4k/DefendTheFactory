@@ -19,16 +19,10 @@ public class ItemStack
     {
         return "${item.name}: {amount}";
     }
-
-
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-
+    // True if the stack is destroyed when the item is removed
+    // Currently presupposes you never remove more than it has
+    public bool lowerAmount(int i){
+        amount -= i;
+        return amount == 0;
     }
 }
