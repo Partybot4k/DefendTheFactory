@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This is just Item data with an amount
+// This is just Item data with an amount]
+[System.Serializable]
 public class ItemStack
 {
     public Item item;

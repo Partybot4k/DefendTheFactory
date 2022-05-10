@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    public float baseHealth;
+    public EnemyInfo info;
     private float health;
 
     public float wallPos;
     private bool hasReachedWall;
     public Wall wall;
 
-    public int atWallTimer = 120;
-    public int wallDamage = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = baseHealth;
+        health = info.baseHealth;
     }
 
     // Update is called once per frame
@@ -26,12 +23,13 @@ public class Enemy : MonoBehaviour
     {
         if (!hasReachedWall)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * info.speed * Time.deltaTime);
             if (transform.position.x >= wallPos)
             {
                 hasReachedWall = true;
             }
-        } else
+        }
+        else
         {
             atWallAction();
         }
@@ -39,12 +37,12 @@ public class Enemy : MonoBehaviour
 
     public void atWallAction()
     {
-        if(atWallTimer == 0)
+        if (info.atWallTimer == 0)
         {
-            wall.DamageWall(wallDamage);
-            atWallTimer = 120;
+            wall.DamageWall(info.wallDamage);
+            info.atWallTimer = 120;
         }
-        atWallTimer--;
+        info.atWallTimer--;
     }
 
     public float damage(float amount)
