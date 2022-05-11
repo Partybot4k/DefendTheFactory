@@ -17,7 +17,7 @@ public class ItemStack
 
     public override string ToString()
     {
-        return "${item.name}: {amount}";
+        return item.name + amount;
     }
     // True if the stack is destroyed when the item is removed
     // Currently presupposes you never remove more than it has

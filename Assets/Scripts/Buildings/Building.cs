@@ -10,7 +10,7 @@ public class Building : MonoBehaviour
     public OnClick onClick;
     public bool isPipeConnectable = false;
     public delegate void Deposit(Item item);
-    Deposit deposit_del;
+    Deposit ReceiveADeposit_del;
     public List<ItemStack> buildingInvetory;
     public Dictionary<string, ItemStack> itemNameToBuildingInventorySlot;
     public MapTileGrid grid;
@@ -21,12 +21,17 @@ public class Building : MonoBehaviour
     {
         itemNameToBuildingInventorySlot = new Dictionary<string, ItemStack>();
         buildingInvetory = new List<ItemStack>();
-        if(spriteRenderer.sprite == null){
+        if(spriteRenderer.sprite == null)
+        {
             spriteRenderer.sprite = buildingInfo.sprite;
         }
-        if(deposit_del == null)
+        if(ReceiveADeposit_del == null)
         {
-            deposit_del = DefaultDeposit;
+            ReceiveADeposit_del = ReceiveADeposit;
+        }
+        if(onClick == null)
+        {
+            onClick = DefaultOnClick;
         }
     }
 
@@ -42,25 +47,38 @@ public class Building : MonoBehaviour
             onClick();
         }
     }
+
+    public void DefaultOnClick()
+    {
+        Debug.Log(buildingInvetory[0]);
+    }
     // Just accepts the item and adds it to the inventory
-    public void DefaultDeposit(Item item)
+    public void ReceiveADeposit(Item item)
+    {
+        AddItemToInventory(item);
+    }
+
+    public void AddItemToInventory(Item item)
     {
         if(itemNameToBuildingInventorySlot.ContainsKey(item.name)){
             itemNameToBuildingInventorySlot[item.name].amount += 1;
         }
         else{
-            itemNameToBuildingInventorySlot[item.name] = new ItemStack(item, 1);
+            ItemStack newItemStack = new ItemStack(item, 1);
+            itemNameToBuildingInventorySlot[item.name] = newItemStack;
+            buildingInvetory.Add(newItemStack);
         }
     }
     // Default attempt deposit method just deposits first thing in inventory
     public void AttemptDeposit()
     {
-        if(buildingInvetory[0] != null){
+        if(buildingInvetory.Count != 0){
             ItemStack toDepositFromStack = buildingInvetory[0];
-            if(toDepositFromStack.lowerAmount(1)){
-                buildingInvetory.Remove(toDepositFromStack);
+            if(TryDepositOnNeighbor(toDepositFromStack.item)){
+                if(toDepositFromStack.lowerAmount(1)){
+                    buildingInvetory.Remove(toDepositFromStack);
+                }
             }
-            TryDepositOnNeighbor(toDepositFromStack.item);
         }
     }
     public bool CanAcceptDeposit(Direction itemSourceDirection)
@@ -79,7 +97,7 @@ public class Building : MonoBehaviour
             Building outputCandidate = neighbors[outputTile].buildingOnTile;
             if(outputCandidate.CanAcceptDeposit(Flip(outputTile))){
                 // Looks like we are good to deposit
-                outputCandidate.deposit_del(i);
+                outputCandidate.ReceiveADeposit_del(i);
                 return true;
             }
             else{
