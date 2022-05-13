@@ -49,7 +49,10 @@ MonoBehaviour:
   buildingInfo: {fileID: 11400000, guid: 247ceea18e21d664c9b3b8a3dc449241, type: 2}
   spriteRenderer: {fileID: 86352840942483560}
   isPipeConnectable: 1
+  buildingInvetory: []
   grid: {fileID: 0}
+  inputTile: 3
+  outputTile: 2
 --- !u!212 &86352840942483560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115,8 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 86352840942483563}
-  direction: 0
-  directionToSprite:
+  pipeOrientation: 0
+  pipeOrientationToSprite:
   - {fileID: 21300000, guid: d86f746a1a358c74db07c1fee7956a26, type: 3}
   - {fileID: 21300000, guid: 798a7b1743055d34b93b60a72d1cb6b0, type: 3}
   - {fileID: 21300000, guid: 9e8367c3e658bb0428bdeec059f9b7d5, type: 3}
@@ -128,3 +131,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9ea084b97a00b3e4a88021832ec401f6, type: 3}
   - {fileID: 21300000, guid: 936c558120cbd5e43ac4dfebe102b468, type: 3}
   - {fileID: 21300000, guid: 216ae072ce7125b4a885c49708193751, type: 3}
+  inputDirections: 
+  pipeItemPrefab: {fileID: 1930996270989632436, guid: 4d080b65dfb4dbd4ab0ea1d5adcef3fa, type: 3}

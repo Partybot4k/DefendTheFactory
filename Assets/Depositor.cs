@@ -9,10 +9,6 @@ public class Depositor : MonoBehaviour
     {
         // Just test code to test items out right now
         b.AddItemToInventory(testItem);
-        b.AddItemToInventory(testItem);
-        b.AddItemToInventory(testItem);
-        b.AddItemToInventory(testItem);
-        b.AddItemToInventory(testItem);
     }
 
     public Building b;

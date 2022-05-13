@@ -5,9 +5,10 @@ using UnityEngine;
 public class PipeItem : MonoBehaviour
 {
     public float speed;
-    public Vector3 direction;
+    public Vector3 directionVector;
     public Item item;
     public SpriteRenderer spriteRenderer;
+    public Direction direction; // just for debugging rn
     void Start()
     {
         spriteRenderer.sprite = item.icon;
@@ -15,22 +16,22 @@ public class PipeItem : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
     }
     public void setDirection(Direction dir){
         switch(dir){
             case Direction.UP:
-                direction = Vector3.up;
+                directionVector = Vector3.up;
                 break;
             case Direction.DOWN:
-                direction = Vector3.down;
+                directionVector = Vector3.down;
                 break;
             case Direction.LEFT:
-                direction = Vector3.left;
+                directionVector = Vector3.left;
                 break;
             case Direction.RIGHT:
-                direction = Vector3.right;
+                directionVector = Vector3.right;
                 break;
         }
+        direction = dir;
     }
 }
