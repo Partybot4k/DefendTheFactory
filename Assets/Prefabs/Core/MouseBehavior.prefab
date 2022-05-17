@@ -48,10 +48,11 @@ MonoBehaviour:
   clickDamage: 2
   clickRadius: 0.5
   clickCooldown: 0
-  collectiblesPickedUp: []
   objectPickupRadius: 0.25
   objectPullRadius: 0.75
   objectPickupWeight: 0.5
+  pickerCollectiblesList: []
+  pickerPrefab: {fileID: 5554840771021701796, guid: 5121b44a5d7188946a4c133d5126c757, type: 3}
 --- !u!82 &6956023288807109518
 AudioSource:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ public class MouseBehavior : MonoBehaviour
     public float objectPullRadius;
     public float objectPickupWeight;
     public List<ItemStack> pickerCollectiblesList;
-    private UIManager uiManager = UIManager.Instance;
-
-    // References
+    private Vector3 pickerOffset = new Vector3(5, -5, 0); // Offset from mouse
+    public GameObject uiManager;
+    public GameObject pickerPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +72,6 @@ public class MouseBehavior : MonoBehaviour
                 // If the item is already in the array, just increase the amount
                 if (c.item.name.Equals(pickerCollectiblesList[i].item.name))
                 {
-                    print("found and adding");
                     found = true;
                     pickerCollectiblesList[i].amount += c.amount;
                     break;
@@ -81,7 +80,6 @@ public class MouseBehavior : MonoBehaviour
 
             if (!found)
             {
-                print("creating new");
                 pickerCollectiblesList.Add(new ItemStack(c.item, c.amount));
             }
         }
@@ -90,6 +88,18 @@ public class MouseBehavior : MonoBehaviour
 
 
         // Destroy the collectible game object
+        updatePickerUI();
         Destroy(c.gameObject);
+    }
+
+    void updatePickerUI()
+    {
+        if (pickerCollectiblesList.Count > 0)
+        {
+            foreach (ItemStack item in pickerCollectiblesList)
+            {
+                Instantiate(pickerPrefab, pickerOffset, Quaternion.identity, uiManager.transform);
+            }
+        }
     }
 }
