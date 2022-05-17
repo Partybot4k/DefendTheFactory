@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
             return instance;
         }
     }
+    public MousePickerUI mousePickerUI;
     void Start()
     {
         instance = this;
@@ -44,6 +45,10 @@ public class UIManager : MonoBehaviour
         {
             shopMenu.close();
         }
+    }
+
+    public void UpdateMousePickerUI(List<ItemStack> item){
+        mousePickerUI.UpdatePickerUI(item);
     }
 
     // Update is called once per frame

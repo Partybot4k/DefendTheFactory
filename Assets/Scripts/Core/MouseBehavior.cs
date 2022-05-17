@@ -11,9 +11,7 @@ public class MouseBehavior : MonoBehaviour
     public float objectPullRadius;
     public float objectPickupWeight;
     public List<ItemStack> pickerCollectiblesList;
-    private Vector3 pickerOffset = new Vector3(5, -5, 0); // Offset from mouse
-    public GameObject uiManager;
-    public GameObject pickerPrefab;
+    public UIManager uiManager;
 
     // Start is called before the first frame update
     void Start()
@@ -85,21 +83,9 @@ public class MouseBehavior : MonoBehaviour
         }
 
         // Update the picker UI that follows the mouse around
-
+        uiManager.UpdateMousePickerUI(pickerCollectiblesList);
 
         // Destroy the collectible game object
-        updatePickerUI();
         Destroy(c.gameObject);
-    }
-
-    void updatePickerUI()
-    {
-        if (pickerCollectiblesList.Count > 0)
-        {
-            foreach (ItemStack item in pickerCollectiblesList)
-            {
-                Instantiate(pickerPrefab, pickerOffset, Quaternion.identity, uiManager.transform);
-            }
-        }
     }
 }
