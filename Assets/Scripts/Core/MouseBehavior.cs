@@ -39,6 +39,8 @@ public class MouseBehavior : MonoBehaviour
             {
                 Enemy e = colliders[i].GetComponent<Enemy>();
                 e.damage(clickDamage);
+                Building b = colliders[i].GetComponent<Building>();
+                b.onClick();
             }
         }
 
@@ -87,5 +89,11 @@ public class MouseBehavior : MonoBehaviour
 
         // Destroy the collectible game object
         Destroy(c.gameObject);
+    }
+
+    public void empty()
+    {
+        pickerCollectiblesList.Clear();
+        uiManager.UpdateMousePickerUI(pickerCollectiblesList);
     }
 }

@@ -10,6 +10,7 @@ public class MapTileGrid : MonoBehaviour
     public int width;
     public int height;
     public float gridSizeScale = 1; // make it bigger to spread the absolute position of the tiles out more. For bigger sprites, for example
+    public GameManager gameManager;
 
     public List<Enemy> Enemies;
 
@@ -18,7 +19,6 @@ public class MapTileGrid : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Clicked a tile! Nice!");
             ClickTile();
         }
     }
@@ -49,8 +49,8 @@ public class MapTileGrid : MonoBehaviour
         Building b = clickedMapTile.buildingOnTile;
         if(null != b)
         {
-            b.click();
             Debug.Log(b.buildingInfo.name);
+            b.onClick();
         }
 }
 

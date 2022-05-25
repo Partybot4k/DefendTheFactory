@@ -182,6 +182,7 @@ MonoBehaviour:
   width: 100
   height: 20
   gridSizeScale: 1.28
+  gameManager: {fileID: 7644620322780548987}
   Enemies: []
 --- !u!1 &7644620322780548986
 GameObject:
@@ -238,6 +239,7 @@ MonoBehaviour:
   wallPosition: 16
   uIManager: {fileID: 7644620323721284643}
   cmFactory: {fileID: 0}
+  mouseBehavior: {fileID: 7644620322056748324}
 --- !u!1 &7644620323472293185
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +513,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 7644620323721284643}
   pickerOffset: {x: 75, y: -75, z: 0}
-  pickerPadding: 0
   pickerPrefab: {fileID: 1290575598871566094, guid: 5121b44a5d7188946a4c133d5126c757, type: 3}
   pickerSlots: []
 --- !u!114 &6278920038014418437
@@ -606,3 +607,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6956023288807109519, guid: 2223a6f4fc5759d4bb3e70487f657c4c, type: 3}
   m_PrefabInstance: {fileID: 765585537776848557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7644620322056748324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6956023288807109513, guid: 2223a6f4fc5759d4bb3e70487f657c4c, type: 3}
+  m_PrefabInstance: {fileID: 765585537776848557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ef9f39623aa674ba01087af29a1043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -9,6 +9,14 @@ public class Depositor : MonoBehaviour
     {
         // Just test code to test items out right now
         b.AddItemToInventory(testItem);
+        b.onClick = onClick;
+    }
+
+    void onClick()
+    {
+        b.grid.gameManager.mouseBehavior.pickerCollectiblesList.ForEach(b.AddItemStackToInventory);
+        b.grid.gameManager.mouseBehavior.empty();
+        b.DefaultOnClick();
     }
 
     public Building b;

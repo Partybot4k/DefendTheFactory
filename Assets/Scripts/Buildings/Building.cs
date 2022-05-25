@@ -59,7 +59,7 @@ public class Building : MonoBehaviour
     public void DefaultOnClick()
     {
         if(buildingInvetory.Count > 0){
-            Debug.Log(buildingInvetory[0]);
+            buildingInvetory.ForEach(Debug.Log);
         }
     }
     // Just accepts the item and adds it to the inventory
@@ -77,6 +77,17 @@ public class Building : MonoBehaviour
             ItemStack newItemStack = new ItemStack(item, 1);
             itemNameToBuildingInventorySlot[item.name] = newItemStack;
             buildingInvetory.Add(newItemStack);
+        }
+    }
+
+    public void AddItemStackToInventory(ItemStack itemStack)
+    {
+        if(itemNameToBuildingInventorySlot.ContainsKey(itemStack.item.name)){
+            itemNameToBuildingInventorySlot[itemStack.item.name].amount += itemStack.amount;
+        }
+        else{
+            itemNameToBuildingInventorySlot[itemStack.item.name] = itemStack;
+            buildingInvetory.Add(itemStack);
         }
     }
     // Default attempt deposit method just deposits first thing in inventory

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public float wallPosition;
     public UIManager uIManager;
     public ConstructionModuleFactory cmFactory;
+    public MouseBehavior mouseBehavior;
     // Start is called before the first frame update
     void Start()
     {
