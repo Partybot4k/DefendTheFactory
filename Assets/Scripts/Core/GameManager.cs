@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        grid.InitializeGrid();
         wall.position = wallPosition;
         wall.BuildWall();
         enemySpawner.wallPosition = wallPosition;

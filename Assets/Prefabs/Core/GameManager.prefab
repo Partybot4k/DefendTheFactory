@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb745fe8e92dee46a91c0086edd9d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTiles:
-  - {fileID: 7984481747579336229, guid: 358d0f2d11f0e2147a96a014ff642719, type: 3}
+  grassTile: {fileID: 7984481747579336229, guid: 358d0f2d11f0e2147a96a014ff642719, type: 3}
+  concreteTile: {fileID: 7984481747579336229, guid: 7b5820ca7ecc9ac40b2455339889bdb7, type: 3}
   width: 100
   height: 20
   gridSizeScale: 1.28

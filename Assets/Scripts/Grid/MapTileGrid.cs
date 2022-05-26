@@ -6,7 +6,8 @@ using System.Linq;
 public class MapTileGrid : MonoBehaviour
 {
     public MapTile[,] tileGrid;
-    public List<MapTile> defaultTiles;
+    public MapTile grassTile;
+    public MapTile concreteTile;
     public int width;
     public int height;
     public float gridSizeScale = 1; // make it bigger to spread the absolute position of the tiles out more. For bigger sprites, for example
@@ -57,14 +58,46 @@ public class MapTileGrid : MonoBehaviour
     // This currently just copies the object contained in mapTile into a grid of dimensions width * height
     void Start()
     {
+    }
+
+    public void InitializeGrid()
+    {
         // Instantiate the grid and populate it with defaults (for now)
         tileGrid = new MapTile[width, height];
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
+                // Random grid tile logic, maybe for another day
+                /*
                 tileGrid[i, j] = Instantiate(
                       defaultTiles[Random.Range(0, defaultTiles.Count)],
+                      new Vector3(i* gridSizeScale, j* gridSizeScale, 0.0f),
+                      Quaternion.identity);
+                */
+                tileGrid[i, j] = Instantiate(
+                      grassTile,
+                      new Vector3(i* gridSizeScale, j* gridSizeScale, 0.0f),
+                      Quaternion.identity);
+                tileGrid[i, j].name = "tile_" + i + "_" + j;
+                tileGrid[i, j].mapTileGrid = this;
+                tileGrid[i, j].tileNode = new TileNode(this, new Vector2Int(i, j));
+                tileGrid[i, j].transform.SetParent(transform);
+            }
+        }
+    }
+    public void updateWallPosition(int position)
+    {
+        for (int i = position; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if(null != tileGrid[i, j])
+                {
+                    GameObject.Destroy(tileGrid[i, j].gameObject);
+                }
+                tileGrid[i, j] = Instantiate(
+                      concreteTile,
                       new Vector3(i* gridSizeScale, j* gridSizeScale, 0.0f),
                       Quaternion.identity);
                 tileGrid[i, j].name = "tile_" + i + "_" + j;

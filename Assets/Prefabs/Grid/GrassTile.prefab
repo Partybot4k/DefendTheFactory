@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7984481747579336229}
   - component: {fileID: 117807809606196263}
   m_Layer: 0
-  m_Name: DefaultTile
+  m_Name: GrassTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapTileGrid: {fileID: 0}
   walkable: 0
+  buildingOnTile: {fileID: 0}
 --- !u!212 &117807809606196263
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e500c06f315ef445b08e359a7d3e934, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e29c5f2f792baca4cb9c841da9dfe359, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

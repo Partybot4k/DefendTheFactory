@@ -29,6 +29,7 @@ public class Wall : MonoBehaviour
             wallBlock.transform.SetParent(transform);
             wallBlocks.Add(wallBlock);
         }
+        grid.updateWallPosition((int)position);
     }
 
     public void DamageWall(int damage)
