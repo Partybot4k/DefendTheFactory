@@ -8,7 +8,7 @@ public class Depositor : MonoBehaviour
     void Start()
     {
         // Just test code to test items out right now
-        b.AddItemToInventory(testItem);
+        b.AddItemToInventory(testItem, 1);
         b.onClick = onClick;
     }
 

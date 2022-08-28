@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7984481747579336229}
   - component: {fileID: 117807809606196263}
   m_Layer: 0
-  m_Name: ConcreteTile
+  m_Name: GrassTile 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b16bf4d9a52c9234abf939a114a9ab53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2a9a04ff853215439c70c900a35c5e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

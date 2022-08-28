@@ -48,6 +48,7 @@ public class Pipe : MonoBehaviour
 
     void MoveItems()
     {
+        // Move pipe items in an intelligent direction
         for (int i = itemsInPipe[Direction.UP].Count - 1; i >= 0; i--)
         {
             MovePipeItem(itemsInPipe[Direction.UP][i], Direction.UP);

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bc2d7652f608541b0a8933bf906452, type: 3}
+  m_Name: AmmoFactory
+  m_EditorClassIdentifier: 
+  buildingName: Ammo Factory
+  width: 1
+  height: 1
+  sprite: {fileID: 21300000, guid: e5d79a00ac6a30846a99c775c0984c28, type: 3}

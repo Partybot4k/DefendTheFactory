@@ -13,16 +13,15 @@ public class Building : MonoBehaviour
     public Deposit ReceiveADeposit_del;
     public delegate bool CanAcceptDeposit(Direction itemSourceDirection, Item item);
     public CanAcceptDeposit CanAcceptDeposit_del;
-    public List<ItemStack> buildingInvetory;
     public Dictionary<string, ItemStack> itemNameToBuildingInventorySlot;
     public MapTileGrid grid;
     public Direction inputTile = Direction.RIGHT;
     public Direction outputTile = Direction.LEFT;
-    
+    public List<string> inputWhiteList = new List<string>(); // If this list is not empty, building will only accept these items. It uses names
+    public List<string> outputWhiteList = new List<string>();
     void Start()
     {
         itemNameToBuildingInventorySlot = new Dictionary<string, ItemStack>();
-        buildingInvetory = new List<ItemStack>();
         if(spriteRenderer.sprite == null)
         {
             spriteRenderer.sprite = buildingInfo.sprite;
@@ -45,7 +44,7 @@ public class Building : MonoBehaviour
 
     void Update()
     {
-        AttemptDeposit();
+        AttemptDepositOnOtherBuilding();
     }
 
     public void click()
@@ -55,49 +54,72 @@ public class Building : MonoBehaviour
             onClick();
         }
     }
-
+    // just logging
     public void DefaultOnClick()
     {
-        if(buildingInvetory.Count > 0){
-            buildingInvetory.ForEach(Debug.Log);
+    }
+        /**
+    ===============inventory methods=============
+    These are the methods for interfacing with building inventory
+    */
+    // Just adds item to inventory, taking into account whitelist
+    public void AddItemToInventory(Item item, int count)
+    {
+        if(inputWhiteList.Count > 0 && !inputWhiteList.Contains(item.name)){
+            return;
         }
-    }
-    // Just accepts the item and adds it to the inventory
-    public void ReceiveADeposit(Direction itemSourceDirection, Item item)
-    {
-        AddItemToInventory(item);
-    }
-
-    public void AddItemToInventory(Item item)
-    {
         if(itemNameToBuildingInventorySlot.ContainsKey(item.name)){
-            itemNameToBuildingInventorySlot[item.name].amount += 1;
+            itemNameToBuildingInventorySlot[item.name].amount += count;
         }
         else{
-            ItemStack newItemStack = new ItemStack(item, 1);
+            ItemStack newItemStack = new ItemStack(item, count);
             itemNameToBuildingInventorySlot[item.name] = newItemStack;
-            buildingInvetory.Add(newItemStack);
+        }
+    }
+    // just remove the item
+    public void removeItemFromInventory(Item item, int count){
+        if(outputWhiteList.Count > 0 && !outputWhiteList.Contains(item.name)){
+            return;
+        }
+        if(itemNameToBuildingInventorySlot.ContainsKey(item.name) && itemNameToBuildingInventorySlot[item.name].amount > 0){
+            itemNameToBuildingInventorySlot[item.name].amount -= count;
+            // no negatives
+            if (itemNameToBuildingInventorySlot[item.name].amount < 0){
+                itemNameToBuildingInventorySlot[item.name].amount = 0;
+            }
         }
     }
 
     public void AddItemStackToInventory(ItemStack itemStack)
     {
-        if(itemNameToBuildingInventorySlot.ContainsKey(itemStack.item.name)){
-            itemNameToBuildingInventorySlot[itemStack.item.name].amount += itemStack.amount;
-        }
-        else{
-            itemNameToBuildingInventorySlot[itemStack.item.name] = itemStack;
-            buildingInvetory.Add(itemStack);
-        }
+        removeItemFromInventory(itemStack.item, itemStack.amount);
+    }
+
+    public void RemoveItemStackToInventory(ItemStack itemStack)
+    {
+        removeItemFromInventory(itemStack.item, itemStack.amount);
+    }
+    /**
+    ===============deposit methods=============
+    These govern default behavior for an item being deposted in the building from another building
+    */
+    // Just accepts the item and adds it to the inventory
+    public void ReceiveADeposit(Direction itemSourceDirection, Item item)
+    {
+        AddItemToInventory(item, 1);
     }
     // Default attempt deposit method just deposits first thing in inventory
-    public void AttemptDeposit()
+    //This is so fucking ugly lol
+    public void AttemptDepositOnOtherBuilding()
     {
-        if(buildingInvetory.Count != 0){
-            ItemStack toDepositFromStack = buildingInvetory[0];
-            if(TryDepositOnNeighbor(toDepositFromStack.item, outputTile)){
-                if(toDepositFromStack.lowerAmount(1)){
-                    buildingInvetory.Remove(toDepositFromStack);
+        if(itemNameToBuildingInventorySlot.Keys.Count != 0){
+            if(itemNameToBuildingInventorySlot.Keys.Count != 0){
+                foreach(string key in itemNameToBuildingInventorySlot.Keys){
+                    if(itemNameToBuildingInventorySlot[key].amount > 0){
+                        if(TryDepositOnNeighbor(itemNameToBuildingInventorySlot[key].item, outputTile)){
+                            removeItemFromInventory(itemNameToBuildingInventorySlot[key].item, 1);
+                        }               
+                    }
                 }
             }
         }

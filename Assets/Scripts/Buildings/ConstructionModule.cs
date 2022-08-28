@@ -22,10 +22,15 @@ public class ConstructionModule : MonoBehaviour
         Vector3 newPosition = new Vector3(mousePosition.x, mousePosition.y, this.transform.position.z);
         this.transform.position = new Vector3(mousePosition.x, mousePosition.y, this.transform.position.z);
         // Place the building on click
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && checkIfBuildSpaceIsValid(mousePosition / grid.gridSizeScale))
         {
             PlaceBuilding();
         }
+    }
+
+    bool checkIfBuildSpaceIsValid(Vector2 buildPosition)
+    {
+        return buildPosition.x > grid.wallPosition && !grid.GetTileNode((int)buildPosition.x, (int)buildPosition.y).Occupied;
     }
 
     // Place the building and destory the construction module

@@ -9,6 +9,8 @@ public class ConstructionModuleFactory : MonoBehaviour
     public MapTileGrid gridInput;
     public static ConstructionModule PipeCMPrefab;
     public ConstructionModule PipeCMPrefabInput;
+    public static ConstructionModule AmmoFactoryCMPrefab;
+    public ConstructionModule AmmoFactoryCMPrefabInput;
     public static MapTileGrid grid;
 
     public void Start()
@@ -31,6 +33,12 @@ public class ConstructionModuleFactory : MonoBehaviour
             case "Pipe":
                 cm = Instantiate(
                         PipeCMPrefab,
+                        new Vector3(0.0f, 0.0f, -2.0f),
+                        Quaternion.identity);
+                break;
+            case "Ammo Factory":
+                cm = Instantiate(
+                        AmmoFactoryCMPrefab,
                         new Vector3(0.0f, 0.0f, -2.0f),
                         Quaternion.identity);
                 break;

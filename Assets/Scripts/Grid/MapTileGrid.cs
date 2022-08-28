@@ -6,12 +6,13 @@ using System.Linq;
 public class MapTileGrid : MonoBehaviour
 {
     public MapTile[,] tileGrid;
-    public MapTile grassTile;
-    public MapTile concreteTile;
+    public MapTile[] grassTiles;
+    public MapTile[] concreteTiles;
     public int width;
     public int height;
     public float gridSizeScale = 1; // make it bigger to spread the absolute position of the tiles out more. For bigger sprites, for example
     public GameManager gameManager;
+    public int wallPosition;
 
     public List<Enemy> Enemies;
 
@@ -68,15 +69,9 @@ public class MapTileGrid : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                // Random grid tile logic, maybe for another day
-                /*
+
                 tileGrid[i, j] = Instantiate(
-                      defaultTiles[Random.Range(0, defaultTiles.Count)],
-                      new Vector3(i* gridSizeScale, j* gridSizeScale, 0.0f),
-                      Quaternion.identity);
-                */
-                tileGrid[i, j] = Instantiate(
-                      grassTile,
+                      grassTiles[Random.Range(0, grassTiles.Count())],
                       new Vector3(i* gridSizeScale, j* gridSizeScale, 0.0f),
                       Quaternion.identity);
                 tileGrid[i, j].name = "tile_" + i + "_" + j;
@@ -88,6 +83,7 @@ public class MapTileGrid : MonoBehaviour
     }
     public void updateWallPosition(int position)
     {
+        wallPosition = position;
         for (int i = position; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -97,7 +93,7 @@ public class MapTileGrid : MonoBehaviour
                     GameObject.Destroy(tileGrid[i, j].gameObject);
                 }
                 tileGrid[i, j] = Instantiate(
-                      concreteTile,
+                      concreteTiles[Random.Range(0, concreteTiles.Count())],
                       new Vector3(i* gridSizeScale, j* gridSizeScale, 0.0f),
                       Quaternion.identity);
                 tileGrid[i, j].name = "tile_" + i + "_" + j;

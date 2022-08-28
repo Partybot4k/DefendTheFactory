@@ -29,6 +29,9 @@ public class Shop : MonoBehaviour
             case "Depositor":
                 ConstructionModuleFactory.InstantiateConstructionModule(itemExchange.resultItem.name);
                 break;
+            case "AmmoFactory":
+                ConstructionModuleFactory.InstantiateConstructionModule(itemExchange.resultItem.name);
+                break;
             default:
                 //int X = 5;
                 break;

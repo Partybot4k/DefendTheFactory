@@ -40,7 +40,10 @@ public class MouseBehavior : MonoBehaviour
                 Enemy e = colliders[i].GetComponent<Enemy>();
                 e.damage(clickDamage);
                 Building b = colliders[i].GetComponent<Building>();
-                b.onClick();
+                if(b != null)
+                {
+                    b.onClick();
+                }
             }
         }
 
