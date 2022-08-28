@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  buildingPrefab: {fileID: 1088814561273843141, guid: e4b5f57cd3534764fabff2e6976e9999, type: 3}
+  buildingPrefab: {fileID: 6556380651701886066, guid: 49131b7e8632ee84d98aa1a71d0c13b2, type: 3}
   spriteRenderer: {fileID: 1148622019467437927}
 --- !u!212 &1148622019467437927
 SpriteRenderer:

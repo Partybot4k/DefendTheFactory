@@ -54,7 +54,7 @@ public class MapTileGrid : MonoBehaviour
             Debug.Log(b.buildingInfo.name);
             b.onClick();
         }
-}
+    }
 
     // This currently just copies the object contained in mapTile into a grid of dimensions width * height
     void Start()
@@ -69,7 +69,6 @@ public class MapTileGrid : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-
                 tileGrid[i, j] = Instantiate(
                       grassTiles[Random.Range(0, grassTiles.Count())],
                       new Vector3(i* gridSizeScale, j* gridSizeScale, 0.0f),

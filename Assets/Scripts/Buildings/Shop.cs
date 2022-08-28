@@ -16,7 +16,6 @@ public class Shop : MonoBehaviour
 
     void openShop()
     {
-        Debug.Log(inventory.inventory[0].resultItem);
         uiManager.toggleShopMenu(inventory);
     }
     // This function matches a purchase to it's item and reacts accordingly

@@ -24,7 +24,7 @@ public class ShopMenu : MonoBehaviour
         {
             ShopButton shopButton = Instantiate(
                 shopButtonPrefab,
-                new Vector3(transform.position.x, transform.position.y + (i * buttonPadding), -2.0f),
+                new Vector3(transform.position.x, transform.position.y - (i * buttonPadding), -2.0f),
                 Quaternion.identity);
             shopButtons.Add(shopButton);
             shopButton.SetUp(itemExchange);

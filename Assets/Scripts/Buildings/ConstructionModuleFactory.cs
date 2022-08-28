@@ -17,6 +17,7 @@ public class ConstructionModuleFactory : MonoBehaviour
     {
         DepositorCM = DepositorCMInput;
         PipeCMPrefab = PipeCMPrefabInput;
+        AmmoFactoryCMPrefab = AmmoFactoryCMPrefabInput;
         grid = gridInput;
     }
     // Does what it says. Called by shop
@@ -36,7 +37,7 @@ public class ConstructionModuleFactory : MonoBehaviour
                         new Vector3(0.0f, 0.0f, -2.0f),
                         Quaternion.identity);
                 break;
-            case "Ammo Factory":
+            case "AmmoFactory":
                 cm = Instantiate(
                         AmmoFactoryCMPrefab,
                         new Vector3(0.0f, 0.0f, -2.0f),

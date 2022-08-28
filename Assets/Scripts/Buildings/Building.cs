@@ -57,17 +57,17 @@ public class Building : MonoBehaviour
     // just logging
     public void DefaultOnClick()
     {
+        foreach(string key in itemNameToBuildingInventorySlot.Keys){
+            Debug.Log(itemNameToBuildingInventorySlot[key].ToString());
+        }
     }
         /**
     ===============inventory methods=============
     These are the methods for interfacing with building inventory
     */
-    // Just adds item to inventory, taking into account whitelist
+    // Just adds item to inventory
     public void AddItemToInventory(Item item, int count)
     {
-        if(inputWhiteList.Count > 0 && !inputWhiteList.Contains(item.name)){
-            return;
-        }
         if(itemNameToBuildingInventorySlot.ContainsKey(item.name)){
             itemNameToBuildingInventorySlot[item.name].amount += count;
         }
@@ -78,9 +78,6 @@ public class Building : MonoBehaviour
     }
     // just remove the item
     public void removeItemFromInventory(Item item, int count){
-        if(outputWhiteList.Count > 0 && !outputWhiteList.Contains(item.name)){
-            return;
-        }
         if(itemNameToBuildingInventorySlot.ContainsKey(item.name) && itemNameToBuildingInventorySlot[item.name].amount > 0){
             itemNameToBuildingInventorySlot[item.name].amount -= count;
             // no negatives
@@ -92,7 +89,7 @@ public class Building : MonoBehaviour
 
     public void AddItemStackToInventory(ItemStack itemStack)
     {
-        removeItemFromInventory(itemStack.item, itemStack.amount);
+        AddItemToInventory(itemStack.item, itemStack.amount);
     }
 
     public void RemoveItemStackToInventory(ItemStack itemStack)
@@ -108,25 +105,24 @@ public class Building : MonoBehaviour
     {
         AddItemToInventory(item, 1);
     }
-    // Default attempt deposit method just deposits first thing in inventory
+    // Default attempt deposit method just deposits first thing in inventory, respecting output whitelist
     //This is so fucking ugly lol
     public void AttemptDepositOnOtherBuilding()
     {
         if(itemNameToBuildingInventorySlot.Keys.Count != 0){
-            if(itemNameToBuildingInventorySlot.Keys.Count != 0){
-                foreach(string key in itemNameToBuildingInventorySlot.Keys){
-                    if(itemNameToBuildingInventorySlot[key].amount > 0){
-                        if(TryDepositOnNeighbor(itemNameToBuildingInventorySlot[key].item, outputTile)){
-                            removeItemFromInventory(itemNameToBuildingInventorySlot[key].item, 1);
-                        }               
-                    }
+            foreach(string key in itemNameToBuildingInventorySlot.Keys){
+                if(itemNameToBuildingInventorySlot[key].amount > 0 && (outputWhiteList.Count == 0 || outputWhiteList.Contains(itemNameToBuildingInventorySlot[key].item.name))){
+                    if(TryDepositOnNeighbor(itemNameToBuildingInventorySlot[key].item, outputTile)){
+                        removeItemFromInventory(itemNameToBuildingInventorySlot[key].item, 1);
+                    }               
                 }
             }
         }
     }
+    // Is it whitelisted? Are we receiving from the right direction?
     public bool CanAcceptDepositDefault(Direction itemSourceDirection, Item item)
     {
-        return itemSourceDirection == inputTile;
+        return itemSourceDirection == inputTile && (inputWhiteList.Count == 0 || inputWhiteList.Contains(item.name));
     }
     // True on success, false on failure
     // Uses CanAcceptDeposit_del and ReceiveADeposit_del

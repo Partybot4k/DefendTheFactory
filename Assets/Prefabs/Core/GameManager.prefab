@@ -177,12 +177,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb745fe8e92dee46a91c0086edd9d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grassTile: {fileID: 7984481747579336229, guid: 358d0f2d11f0e2147a96a014ff642719, type: 3}
-  concreteTile: {fileID: 7984481747579336229, guid: 7b5820ca7ecc9ac40b2455339889bdb7, type: 3}
+  grassTiles:
+  - {fileID: 7984481747579336229, guid: d39ce5e16cafa09429b5bd5fad18ff79, type: 3}
+  - {fileID: 7984481747579336229, guid: fb2e51bf0f6c0284e92a752d0c8f0e6f, type: 3}
+  - {fileID: 7984481747579336229, guid: e03162bb304fbe04fbf44ab446687bd1, type: 3}
+  concreteTiles:
+  - {fileID: 7984481747579336229, guid: d64a7049ce39e274ca366c18c236e1bf, type: 3}
+  - {fileID: 7984481747579336229, guid: 0ccdb9eeb2c65d849b0fedddff5d3a6f, type: 3}
+  - {fileID: 7984481747579336229, guid: 84a8141da29c0f24cbd7856ced1318b4, type: 3}
   width: 100
   height: 20
   gridSizeScale: 1.28
   gameManager: {fileID: 7644620322780548987}
+  wallPosition: 0
   Enemies: []
 --- !u!1 &7644620322780548986
 GameObject:
