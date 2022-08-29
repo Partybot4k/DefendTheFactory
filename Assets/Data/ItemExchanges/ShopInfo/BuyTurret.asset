@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fa537b678758f47b3f82c43f3f2dd6, type: 3}
-  m_Name: AmmoFactory
+  m_Script: {fileID: 11500000, guid: ebb322e3328c23a41ad3c159beb25128, type: 3}
+  m_Name: BuyTurret
   m_EditorClassIdentifier: 
-  name: AmmoFactory
-  description: Makes Ammo from Scrap
-  icon: {fileID: 21300000, guid: 4b093d6a30a5f1a448d2c0f290a4acaf, type: 3}
+  resultItem: {fileID: 11400000, guid: 206e1478b12a15541b4de863c163a806, type: 2}
+  resultAmount: 1
+  costItem: {fileID: 11400000, guid: b525a71f0527c7442988a6dcf94ae6f8, type: 2}
+  costAmount: 3

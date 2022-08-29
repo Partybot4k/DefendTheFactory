@@ -11,6 +11,8 @@ public class ConstructionModuleFactory : MonoBehaviour
     public ConstructionModule PipeCMPrefabInput;
     public static ConstructionModule AmmoFactoryCMPrefab;
     public ConstructionModule AmmoFactoryCMPrefabInput;
+    public static ConstructionModule TurretCMPrefab;
+    public ConstructionModule TurretCMPrefabInput;
     public static MapTileGrid grid;
 
     public void Start()
@@ -18,6 +20,7 @@ public class ConstructionModuleFactory : MonoBehaviour
         DepositorCM = DepositorCMInput;
         PipeCMPrefab = PipeCMPrefabInput;
         AmmoFactoryCMPrefab = AmmoFactoryCMPrefabInput;
+        TurretCMPrefab = TurretCMPrefabInput;
         grid = gridInput;
     }
     // Does what it says. Called by shop
@@ -40,6 +43,12 @@ public class ConstructionModuleFactory : MonoBehaviour
             case "AmmoFactory":
                 cm = Instantiate(
                         AmmoFactoryCMPrefab,
+                        new Vector3(0.0f, 0.0f, -2.0f),
+                        Quaternion.identity);
+                break;
+            case "Turret":
+                cm = Instantiate(
+                        TurretCMPrefab,
                         new Vector3(0.0f, 0.0f, -2.0f),
                         Quaternion.identity);
                 break;

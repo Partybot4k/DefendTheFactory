@@ -200,6 +200,8 @@ MonoBehaviour:
   DepositorCMInput: {fileID: 8065919212721281261, guid: 1f1acf9e72eec324abbc4ad26ff11f57, type: 3}
   gridInput: {fileID: 1445299579}
   PipeCMPrefabInput: {fileID: 8065919212721281261, guid: 4f589e0202d418147ad0e805500b4def, type: 3}
+  AmmoFactoryCMPrefabInput: {fileID: 1148622019467437926, guid: 489e2c375cba2004aaac9f0de860e6bf, type: 3}
+  TurretCMPrefabInput: {fileID: 8065919212721281261, guid: ae5bdf48e3b8d03428c91637c2293cda, type: 3}
 --- !u!114 &454678126 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4315755649786592867, guid: f16b8513d613006468f22f4297fdc2d9, type: 3}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0bc2d7652f608541b0a8933bf906452, type: 3}
-  m_Name: AmmoFactory
+  m_Name: Turret
   m_EditorClassIdentifier: 
-  buildingName: Ammo Factory
+  buildingName: Turret
   width: 1
   height: 1
-  sprite: {fileID: 21300000, guid: e5d79a00ac6a30846a99c775c0984c28, type: 3}
+  sprite: {fileID: 21300000, guid: 4b093d6a30a5f1a448d2c0f290a4acaf, type: 3}

@@ -31,6 +31,9 @@ public class Shop : MonoBehaviour
             case "AmmoFactory":
                 ConstructionModuleFactory.InstantiateConstructionModule(itemExchange.resultItem.name);
                 break;
+            case "Turret":
+                ConstructionModuleFactory.InstantiateConstructionModule(itemExchange.resultItem.name);
+                break;
             default:
                 //int X = 5;
                 break;

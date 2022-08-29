@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fa537b678758f47b3f82c43f3f2dd6, type: 3}
+  m_Script: {fileID: 11500000, guid: d0bc2d7652f608541b0a8933bf906452, type: 3}
   m_Name: AmmoFactory
   m_EditorClassIdentifier: 
-  name: AmmoFactory
-  description: Makes Ammo from Scrap
-  icon: {fileID: 21300000, guid: 4b093d6a30a5f1a448d2c0f290a4acaf, type: 3}
+  buildingName: Ammo Factory
+  width: 1
+  height: 1
+  sprite: {fileID: 21300000, guid: 3e500c06f315ef445b08e359a7d3e934, type: 3}
