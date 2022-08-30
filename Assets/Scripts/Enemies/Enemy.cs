@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float wallPos;
     private bool hasReachedWall;
     public Wall wall;
+    public bool isDead = false;
 
 
     // Start is called before the first frame update
@@ -44,28 +45,34 @@ public class Enemy : MonoBehaviour
         }
         info.atWallTimer--;
     }
-
+    // Checks if hit by projectile
+    void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if(collider2D.tag == "projectile")
+        {
+            Projectile newP = collider2D.gameObject.GetComponent<Projectile>();
+            int damageAmount = newP.damage;
+            Destroy(collider2D.gameObject);
+            damage(damageAmount);
+        }
+    }
     public float damage(float amount)
     {
         // Reduce enemy HP by amount
         health -= amount;
 
-        // Call die() if at 0 health
+        // Die if at 0 health
         if (health <= 0)
         {
             die();
         }
-
-        // Return the new health
         return health;
     }
 
     void die()
     {
-        // Instance a collectible
-
         // Remove Enemy object
         GetComponent<AudioSource>().Play();
-        Destroy(GetComponent<Enemy>().gameObject);
+        isDead = true;
     }
 }

@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public int damage;
     public Sprite sprite;
     public SpriteRenderer spriteRenderer;
+    public int lifeSpan = 100;
     void Start()
     {
         spriteRenderer.sprite = sprite;
@@ -17,5 +18,10 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime);
+        lifeSpan--;
+        if (lifeSpan == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

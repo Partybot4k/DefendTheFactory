@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public MapTileGrid grid;
     public Enemy basicEnemy;
     public float wallPosition;
@@ -41,5 +40,8 @@ public class EnemyManager : MonoBehaviour
             SpawnDefaultEnemy();
             timer = 300;
         }
+        List<Enemy> deadEnemies = enemies.FindAll((enemy => enemy.isDead));
+        enemies.RemoveAll(enemy => enemy.isDead);
+        deadEnemies.ForEach(enemy => Destroy(enemy.gameObject));
     }
 }
