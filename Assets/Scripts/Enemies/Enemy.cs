@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour
     public Wall wall;
     public bool isDead = false;
 
+    public int dropChance;
+
+    public Collectible drop;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +76,14 @@ public class Enemy : MonoBehaviour
     void die()
     {
         // Remove Enemy object
+        dropLoot();
         GetComponent<AudioSource>().Play();
         isDead = true;
+    }
+
+    void dropLoot(){
+        if (Random.Range(0, dropChance) == 0){
+            Instantiate(drop, transform.position, Quaternion.identity);
+        }
     }
 }

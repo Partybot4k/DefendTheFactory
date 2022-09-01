@@ -230,7 +230,7 @@ public class Pipe : MonoBehaviour
         return inputDirections.Contains(itemSourceDirection);
     }
 
-    void UpdateDirection(bool alsoUpdateNeighbors)
+    public void UpdateDirection(bool alsoUpdateNeighbors)
     {
         Vector2 gridPosition = grid.getTileCoord(new Vector2(this.transform.position.x, this.transform.position.y));
         Dictionary<Direction, MapTile> neighbors = grid.GetNeighboursOfTile(grid.GetTile(gridPosition));

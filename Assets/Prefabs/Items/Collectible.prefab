@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 35743834132389c4082cc0919c7ef3ed, type: 2}
-  amount: 0
+  amount: 6
   sprRenderer: {fileID: 2713068453634237891}
 --- !u!212 &2713068453634237891
 SpriteRenderer:

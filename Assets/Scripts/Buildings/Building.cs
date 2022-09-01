@@ -40,6 +40,7 @@ public class Building : MonoBehaviour
         }
         inputTile = Direction.RIGHT;
         outputTile = Direction.LEFT;
+        UpdateNeighborsOrientation();
     }
 
     void Update()
@@ -92,7 +93,7 @@ public class Building : MonoBehaviour
         AddItemToInventory(itemStack.item, itemStack.amount);
     }
 
-    public void RemoveItemStackToInventory(ItemStack itemStack)
+    public void RemoveItemStackFromInventory(ItemStack itemStack)
     {
         removeItemFromInventory(itemStack.item, itemStack.amount);
     }
@@ -163,6 +164,50 @@ public class Building : MonoBehaviour
                 return Direction.LEFT;
             default:
                 return d;
+        }
+    }
+
+    void UpdateNeighborsOrientation()
+    {
+        // Yes this is copy paste from pipe class lol
+        Vector2 gridPosition = grid.getTileCoord(new Vector2(this.transform.position.x, this.transform.position.y));
+        Dictionary<Direction, MapTile> neighbors = grid.GetNeighboursOfTile(grid.GetTile(gridPosition));
+        bool up = neighbors[Direction.UP] != null && neighbors[Direction.UP].buildingOnTile != null && neighbors[Direction.UP].buildingOnTile.isPipeConnectable;
+        bool right = neighbors[Direction.RIGHT] != null && neighbors[Direction.RIGHT].buildingOnTile != null && neighbors[Direction.RIGHT].buildingOnTile.isPipeConnectable;
+        bool down = neighbors[Direction.DOWN] != null && neighbors[Direction.DOWN].buildingOnTile != null && neighbors[Direction.DOWN].buildingOnTile.isPipeConnectable;
+        bool left = neighbors[Direction.LEFT] != null && neighbors[Direction.LEFT].buildingOnTile != null && neighbors[Direction.LEFT].buildingOnTile.isPipeConnectable;
+        Pipe p;
+        if(up)
+        {
+            p = neighbors[Direction.UP].buildingOnTile.gameObject.GetComponent<Pipe>();
+            if(p != null)
+            {
+                p.UpdateDirection(false);
+            }
+        }
+        if(right)
+        {
+            p = neighbors[Direction.RIGHT].buildingOnTile.gameObject.GetComponent<Pipe>();
+            if(p != null)
+            {
+                p.UpdateDirection(false);
+            }
+        }
+        if(down)
+        {
+            p = neighbors[Direction.DOWN].buildingOnTile.gameObject.GetComponent<Pipe>();
+            if(p != null)
+            {
+                p.UpdateDirection(false);
+            }
+        }
+        if(left)
+        {
+            p = neighbors[Direction.LEFT].buildingOnTile.gameObject.GetComponent<Pipe>();
+            if(p != null)
+            {
+                p.UpdateDirection(false);
+            }
         }
     }
 }

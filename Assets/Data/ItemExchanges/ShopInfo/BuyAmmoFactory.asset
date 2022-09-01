@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultItem: {fileID: 11400000, guid: 764caada0dc1683488cc5b1a2188eed1, type: 2}
   resultAmount: 1
-  costItem: {fileID: 11400000, guid: 35743834132389c4082cc0919c7ef3ed, type: 2}
+  costItem: {fileID: 11400000, guid: 48821559b2b2f33458c19c0d2a7a413f, type: 2}
   costAmount: 3

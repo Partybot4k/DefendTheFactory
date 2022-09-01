@@ -43,6 +43,13 @@ public class Turret : MonoBehaviour
         {
             return;
         }
+        if(b.itemNameToBuildingInventorySlot.ContainsKey(ammo.name) && b.itemNameToBuildingInventorySlot[ammo.name].amount > 0){
+            b.removeItemFromInventory(ammo, 1);
+        }
+        else{
+            // no ammo
+            return;
+        }
         Projectile newProjectile = Instantiate(projectilePrefab, new Vector3(transform.localPosition.x, transform.localPosition.y, -2.0f), Quaternion.identity);
         Vector3 targetDirection = (targetEnemy.transform.position - transform.position).normalized;
         newProjectile.direction = targetDirection;

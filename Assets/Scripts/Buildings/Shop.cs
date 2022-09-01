@@ -21,6 +21,10 @@ public class Shop : MonoBehaviour
     // This function matches a purchase to it's item and reacts accordingly
     public static void OnBuy(ItemExchange itemExchange)
     {
+        if(GameManager.money < itemExchange.costAmount){
+            return;
+        }
+        GameManager.addMoney(-1 * itemExchange.costAmount);
         switch(itemExchange.resultItem.name){
             case "Pipe":
                 ConstructionModuleFactory.InstantiateConstructionModule(itemExchange.resultItem.name);
@@ -35,13 +39,18 @@ public class Shop : MonoBehaviour
                 ConstructionModuleFactory.InstantiateConstructionModule(itemExchange.resultItem.name);
                 break;
             default:
-                //int X = 5;
                 break;
         }
     }
 
     void  Update()
     {
-
+        // sell all items in it
+        foreach (string key in building.itemNameToBuildingInventorySlot.Keys){
+            if(building.itemNameToBuildingInventorySlot[key].amount > 0){
+                GameManager.addMoney(building.itemNameToBuildingInventorySlot[key].amount * building.itemNameToBuildingInventorySlot[key].item.price);
+                building.RemoveItemStackFromInventory(building.itemNameToBuildingInventorySlot[key]);
+            }
+        }
     }
 }

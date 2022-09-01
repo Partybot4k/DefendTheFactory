@@ -53,6 +53,86 @@ MonoBehaviour:
   buttonPadding: 128
   shopButtons: []
   isOpen: 0
+--- !u!1 &4394746625742272149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6371259795636612214}
+  - component: {fileID: 5492221699637944261}
+  - component: {fileID: 7524840885937118669}
+  m_Layer: 5
+  m_Name: Money
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6371259795636612214
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394746625742272149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7644620323721284644}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -775.2312, y: 377.04}
+  m_SizeDelta: {x: 319.5375, y: 93.924}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5492221699637944261
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394746625742272149}
+  m_CullTransparentMesh: 1
+--- !u!114 &7524840885937118669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394746625742272149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Money: '
 --- !u!1 &7644620322447364184
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +327,7 @@ MonoBehaviour:
   uIManager: {fileID: 7644620323721284643}
   cmFactory: {fileID: 0}
   mouseBehavior: {fileID: 7644620322056748324}
+  money: 0
 --- !u!1 &7644620323472293185
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +464,7 @@ RectTransform:
   - {fileID: 7644620322447364189}
   - {fileID: 3820759167194535815}
   - {fileID: 7345160408787551402}
+  - {fileID: 6371259795636612214}
   m_Father: {fileID: 7644620322780548988}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -465,8 +547,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallHealthUIComponent: {fileID: 7644620322447364188}
-  shopMenu: {fileID: 0}
+  moneyUIComponent: {fileID: 7524840885937118669}
+  shopMenu: {fileID: 4315755649786592867}
   wallHealthValue: 0
+  moneyValue: 0
   mousePickerUI: {fileID: 0}
 --- !u!1 &8124057159568571252
 GameObject:
